@@ -10,26 +10,23 @@ import {
 } from "@/components/ui/select";
 import { ProjectStatus, ProjectType } from "@/types";
 import { X } from "lucide-react";
+import { useState } from "react";
 
 interface ProjectFiltersProps {
-  filters: {
-    search: string;
-    status: ProjectStatus | "";
-    type: ProjectType | "";
-  };
-  setFilters: React.Dispatch<React.SetStateAction<{
-    search: string;
-    status: ProjectStatus | "";
-    type: ProjectType | "";
-  }>>;
-  handleFilterChange: (filters: {
+  onFilterChange: (filters: {
     search: string;
     status: ProjectStatus | "";
     type: ProjectType | "";
   }) => void;
 }
 
-export function ProjectFilters({ filters, setFilters, handleFilterChange }: ProjectFiltersProps) {
+export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
+  const [filters, setFilters] = useState({
+    search: "",
+    status: "" as ProjectStatus | "",
+    type: "" as ProjectType | ""
+  });
+
   const resetFilters = () => {
     const resetFilters = {
       search: "",
@@ -37,7 +34,12 @@ export function ProjectFilters({ filters, setFilters, handleFilterChange }: Proj
       type: "" as const
     };
     setFilters(resetFilters);
-    handleFilterChange(resetFilters);
+    onFilterChange(resetFilters);
+  };
+
+  const handleFilterChange = (newFilters: typeof filters) => {
+    setFilters(newFilters);
+    onFilterChange(newFilters);
   };
 
   return (
@@ -48,7 +50,6 @@ export function ProjectFilters({ filters, setFilters, handleFilterChange }: Proj
           value={filters.search}
           onChange={(e) => {
             const newFilters = { ...filters, search: e.target.value };
-            setFilters(newFilters);
             handleFilterChange(newFilters);
           }}
         />
@@ -58,7 +59,6 @@ export function ProjectFilters({ filters, setFilters, handleFilterChange }: Proj
           value={filters.status}
           onValueChange={(value) => {
             const newFilters = { ...filters, status: value as ProjectStatus | "" };
-            setFilters(newFilters);
             handleFilterChange(newFilters);
           }}
         >
@@ -80,7 +80,6 @@ export function ProjectFilters({ filters, setFilters, handleFilterChange }: Proj
           value={filters.type}
           onValueChange={(value) => {
             const newFilters = { ...filters, type: value as ProjectType | "" };
-            setFilters(newFilters);
             handleFilterChange(newFilters);
           }}
         >
