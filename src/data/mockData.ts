@@ -487,6 +487,368 @@ export const mockProjects: Project[] = [
     stakeholders: ["Port of Houston Authority", "US Army Corps of Engineers", "Texas Department of Transportation"],
     tags: ["port", "shipping", "dredging", "maritime"],
     lastUpdated: "2023-07-15"
+  },
+  {
+    id: "p21",
+    name: "California High-Speed Rail",
+    description: "First true high-speed rail system in the United States connecting Los Angeles and San Francisco with trains reaching speeds of 350 km/h.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.TRANSPORT,
+    budget: 77300000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "United States",
+      city: "Los Angeles",
+      coordinates: {
+        lat: 34.0522,
+        lng: -118.2437
+      }
+    },
+    timeline: {
+      start: "2015-01-06",
+      estimatedCompletion: "2033-12-31"
+    },
+    stakeholders: ["California High-Speed Rail Authority", "Federal Railroad Administration"],
+    tags: ["rail", "high-speed", "infrastructure", "public transport"],
+    lastUpdated: "2023-07-18"
+  },
+  {
+    id: "p22",
+    name: "Gordie Howe International Bridge",
+    description: "The longest cable-stayed bridge in North America connecting Detroit, Michigan and Windsor, Ontario.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.TRANSPORT,
+    budget: 4800000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "United States",
+      city: "Detroit",
+      coordinates: {
+        lat: 42.3314,
+        lng: -83.0458
+      }
+    },
+    timeline: {
+      start: "2018-10-05",
+      estimatedCompletion: "2025-12-31"
+    },
+    stakeholders: ["Windsor-Detroit Bridge Authority", "Michigan Department of Transportation", "Transport Canada"],
+    tags: ["bridge", "international", "infrastructure", "border crossing"],
+    lastUpdated: "2023-09-15"
+  },
+  {
+    id: "p23",
+    name: "Champlain Hudson Power Express",
+    description: "A 339-mile underground and underwater transmission line delivering 100% renewable hydropower from Canada to New York City.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.ENERGY,
+    budget: 6000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "United States",
+      city: "New York",
+      coordinates: {
+        lat: 40.7128,
+        lng: -74.0060
+      }
+    },
+    timeline: {
+      start: "2022-11-30",
+      estimatedCompletion: "2026-05-15"
+    },
+    stakeholders: ["Hydro-Québec", "Transmission Developers Inc.", "New York State Energy Research and Development Authority"],
+    tags: ["energy", "renewable", "transmission", "hydropower"],
+    lastUpdated: "2023-12-10"
+  },
+  {
+    id: "p24",
+    name: "Site C Dam",
+    description: "A major hydroelectric dam and generating station on the Peace River in northeastern British Columbia.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.WATER,
+    budget: 16000000000,
+    budgetCurrency: "CAD",
+    location: {
+      country: "Canada",
+      city: "Fort St. John",
+      coordinates: {
+        lat: 56.2500,
+        lng: -120.8480
+      }
+    },
+    timeline: {
+      start: "2015-07-27",
+      estimatedCompletion: "2025-12-31"
+    },
+    stakeholders: ["BC Hydro", "British Columbia Government", "Peace River Regional District"],
+    tags: ["dam", "hydroelectric", "energy", "water management"],
+    lastUpdated: "2023-11-05"
+  },
+  {
+    id: "p25",
+    name: "Fehmarn Belt Fixed Link",
+    description: "An 18 km immersed tunnel connecting Denmark and Germany, reducing Copenhagen-Hamburg travel time to 2.5 hours.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.TRANSPORT,
+    budget: 10000000000,
+    budgetCurrency: "EUR",
+    location: {
+      country: "Denmark",
+      city: "Rødbyhavn",
+      coordinates: {
+        lat: 54.6517,
+        lng: 11.3500
+      }
+    },
+    timeline: {
+      start: "2020-01-01",
+      estimatedCompletion: "2030-12-31"
+    },
+    stakeholders: ["Femern A/S", "German Federal Ministry of Transport", "Danish Government"],
+    tags: ["tunnel", "infrastructure", "international", "rail", "road"],
+    lastUpdated: "2023-10-15"
+  },
+  {
+    id: "p26",
+    name: "Grand Paris Express",
+    description: "A 200 km automated metro network with 68 stations around Paris, featuring fully automated rubber-tyred trains.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.TRANSPORT,
+    budget: 45000000000,
+    budgetCurrency: "EUR",
+    location: {
+      country: "France",
+      city: "Paris",
+      coordinates: {
+        lat: 48.8566,
+        lng: 2.3522
+      }
+    },
+    timeline: {
+      start: "2015-06-20",
+      estimatedCompletion: "2030-12-31"
+    },
+    stakeholders: ["Société du Grand Paris", "RATP", "Île-de-France Mobilités"],
+    tags: ["metro", "public transport", "urban development"],
+    lastUpdated: "2023-10-05"
+  },
+  {
+    id: "p27",
+    name: "Flamanville EPR Reactor",
+    description: "A 1,650 MW nuclear power plant using third-generation pressurized water reactor technology.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.ENERGY,
+    budget: 12700000000,
+    budgetCurrency: "EUR",
+    location: {
+      country: "France",
+      city: "Flamanville",
+      coordinates: {
+        lat: 49.5356,
+        lng: -1.8811
+      }
+    },
+    timeline: {
+      start: "2007-12-04",
+      estimatedCompletion: "2023-12-31"
+    },
+    stakeholders: ["EDF", "French Government", "Nuclear Safety Authority"],
+    tags: ["nuclear", "energy", "power plant", "reactor"],
+    lastUpdated: "2023-08-22"
+  },
+  {
+    id: "p28",
+    name: "Grand Inga Dam",
+    description: "A massive hydroelectric power project with 40,000 MW potential capacity that could power 40% of Africa.",
+    status: ProjectStatus.PLANNED,
+    type: ProjectType.ENERGY,
+    budget: 100000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Democratic Republic of Congo",
+      city: "Inga",
+      coordinates: {
+        lat: -5.5243,
+        lng: 13.6201
+      }
+    },
+    timeline: {
+      start: "2025-01-01",
+      estimatedCompletion: "2050-12-31"
+    },
+    stakeholders: ["DRC Government", "African Development Bank", "World Bank"],
+    tags: ["hydroelectric", "dam", "energy", "power"],
+    lastUpdated: "2023-11-30"
+  },
+  {
+    id: "p29",
+    name: "Egypt's New Administrative Capital",
+    description: "A massive 700 km² new capital city being built east of Cairo to relieve congestion.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.BUILDINGS,
+    budget: 45000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Egypt",
+      city: "New Capital",
+      coordinates: {
+        lat: 30.0176,
+        lng: 31.7476
+      }
+    },
+    timeline: {
+      start: "2015-03-14",
+      estimatedCompletion: "2025-12-31"
+    },
+    stakeholders: ["Egyptian Government", "China State Construction Engineering", "Administrative Capital for Urban Development"],
+    tags: ["urban development", "smart city", "government", "infrastructure"],
+    lastUpdated: "2023-12-05"
+  },
+  {
+    id: "p30",
+    name: "Sydney Metro",
+    description: "A 113km automated metro network with 46 stations across Sydney, featuring fully automated trains.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.TRANSPORT,
+    budget: 25000000000,
+    budgetCurrency: "AUD",
+    location: {
+      country: "Australia",
+      city: "Sydney",
+      coordinates: {
+        lat: -33.8688,
+        lng: 151.2093
+      }
+    },
+    timeline: {
+      start: "2013-06-16",
+      estimatedCompletion: "2032-12-31"
+    },
+    stakeholders: ["Transport for NSW", "Sydney Metro Authority", "New South Wales Government"],
+    tags: ["metro", "public transport", "infrastructure", "urban mobility"],
+    lastUpdated: "2023-09-22"
+  },
+  {
+    id: "p31",
+    name: "Snowy 2.0 Hydro",
+    description: "A 2,000MW pumped hydro storage project with 27km tunnels and 2GW turbine upgrades.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.ENERGY,
+    budget: 12000000000,
+    budgetCurrency: "AUD",
+    location: {
+      country: "Australia",
+      city: "Kosciuszko National Park",
+      coordinates: {
+        lat: -36.0048,
+        lng: 148.3897
+      }
+    },
+    timeline: {
+      start: "2019-02-26",
+      estimatedCompletion: "2027-12-31"
+    },
+    stakeholders: ["Snowy Hydro Limited", "Australian Government", "New South Wales Government"],
+    tags: ["hydro", "energy storage", "renewable energy", "electricity"],
+    lastUpdated: "2023-10-10"
+  },
+  {
+    id: "p32",
+    name: "Belo Monte Dam",
+    description: "The world's 4th-largest hydroelectric plant with 11,233 MW capacity in the Amazon Basin.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.ENERGY,
+    budget: 18500000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Brazil",
+      city: "Altamira",
+      coordinates: {
+        lat: -3.1369,
+        lng: -51.8097
+      }
+    },
+    timeline: {
+      start: "2011-06-01",
+      estimatedCompletion: "2019-11-27",
+      actualCompletion: "2019-11-27"
+    },
+    stakeholders: ["Norte Energia", "Brazilian Government", "Eletrobras"],
+    tags: ["hydroelectric", "dam", "energy", "amazon"],
+    lastUpdated: "2023-01-15"
+  },
+  {
+    id: "p33",
+    name: "Mina Justa Copper Mine",
+    description: "A major copper mine producing 149,000 tons of concentrate per year.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.INDUSTRIAL,
+    budget: 1600000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Peru",
+      city: "Ica",
+      coordinates: {
+        lat: -15.3032,
+        lng: -75.1096
+      }
+    },
+    timeline: {
+      start: "2018-09-12",
+      estimatedCompletion: "2021-07-31",
+      actualCompletion: "2021-07-31"
+    },
+    stakeholders: ["Minsur", "Alxar", "Copec Group"],
+    tags: ["mining", "copper", "industrial", "extraction"],
+    lastUpdated: "2022-03-10"
+  },
+  {
+    id: "p34",
+    name: "Mumbai-Ahmedabad Bullet Train",
+    description: "India's first high-speed rail using Japanese Shinkansen technology, reducing travel time from 7 to 2 hours.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.TRANSPORT,
+    budget: 18000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "India",
+      city: "Mumbai",
+      coordinates: {
+        lat: 19.0760,
+        lng: 72.8777
+      }
+    },
+    timeline: {
+      start: "2017-09-14",
+      estimatedCompletion: "2026-12-31"
+    },
+    stakeholders: ["National High Speed Rail Corporation Limited", "Indian Railways", "Japan International Cooperation Agency"],
+    tags: ["high-speed rail", "bullet train", "infrastructure", "transportation"],
+    lastUpdated: "2023-11-20"
+  },
+  {
+    id: "p35",
+    name: "Chūō Shinkansen Maglev",
+    description: "The world's first intercity maglev line running at 505 km/h between Tokyo, Nagoya and Osaka.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.TRANSPORT,
+    budget: 95900000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Japan",
+      city: "Tokyo",
+      coordinates: {
+        lat: 35.6762,
+        lng: 139.6503
+      }
+    },
+    timeline: {
+      start: "2014-12-17",
+      estimatedCompletion: "2037-12-31"
+    },
+    stakeholders: ["Central Japan Railway Company", "Japanese Government", "RTRI"],
+    tags: ["maglev", "high-speed rail", "transportation", "technology"],
+    lastUpdated: "2023-08-05"
   }
 ];
 
@@ -598,11 +960,13 @@ export const mockStatsSummary: StatsSummary = {
     [ProjectType.OTHER]: mockProjects.filter(p => p.type === ProjectType.OTHER).length
   },
   byRegion: {
-    "Asia": 4,
-    "Europe": 3,
-    "North America": 10,
-    "Middle East": 1,
-    "Australia": 1
+    "Asia": 6,
+    "Europe": 5,
+    "North America": 14,
+    "South America": 2,
+    "Africa": 2,
+    "Australia": 3,
+    "Middle East": 3
   },
   totalBudget: 180000000000,
   averageCompletionTime: 1095
