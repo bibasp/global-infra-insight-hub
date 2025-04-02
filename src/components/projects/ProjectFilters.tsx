@@ -58,7 +58,9 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
         <Select
           value={filters.status}
           onValueChange={(value) => {
-            const newFilters = { ...filters, status: value as ProjectStatus | "" };
+            // Convert "all" to empty string for filter logic
+            const newValue = value === "all" ? "" : value as ProjectStatus;
+            const newFilters = { ...filters, status: newValue };
             handleFilterChange(newFilters);
           }}
         >
@@ -79,7 +81,9 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
         <Select
           value={filters.type}
           onValueChange={(value) => {
-            const newFilters = { ...filters, type: value as ProjectType | "" };
+            // Convert "all" to empty string for filter logic
+            const newValue = value === "all" ? "" : value as ProjectType;
+            const newFilters = { ...filters, type: newValue };
             handleFilterChange(newFilters);
           }}
         >

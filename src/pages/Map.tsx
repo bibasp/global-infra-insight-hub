@@ -15,14 +15,14 @@ import { Badge } from "@/components/ui/badge";
 
 const Map = () => {
   const mapRef = useRef<HTMLDivElement>(null);
-  const [selectedStatus, setSelectedStatus] = useState<string>("");
-  const [selectedType, setSelectedType] = useState<string>("");
+  const [selectedStatus, setSelectedStatus] = useState<string>("all");
+  const [selectedType, setSelectedType] = useState<string>("all");
   
   const filteredProjects = mockProjects.filter(project => {
-    if (selectedStatus && project.status !== selectedStatus) {
+    if (selectedStatus && selectedStatus !== "all" && project.status !== selectedStatus) {
       return false;
     }
-    if (selectedType && project.type !== selectedType) {
+    if (selectedType && selectedType !== "all" && project.type !== selectedType) {
       return false;
     }
     return true;
@@ -106,7 +106,7 @@ const Map = () => {
                   <SelectValue placeholder="All Statuses" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Statuses</SelectItem>
+                  <SelectItem value="all">All Statuses</SelectItem>
                   {Object.values(ProjectStatus).map((status) => (
                     <SelectItem key={status} value={status}>{status}</SelectItem>
                   ))}
@@ -118,7 +118,7 @@ const Map = () => {
                   <SelectValue placeholder="All Types" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Types</SelectItem>
+                  <SelectItem value="all">All Types</SelectItem>
                   {Object.values(ProjectType).map((type) => (
                     <SelectItem key={type} value={type}>{type}</SelectItem>
                   ))}

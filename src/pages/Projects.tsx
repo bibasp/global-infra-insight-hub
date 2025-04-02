@@ -22,12 +22,12 @@ const Projects = () => {
       }
       
       // Apply status filter (skip if "all" or empty)
-      if (filters.status && filters.status !== "all" && project.status !== filters.status) {
+      if (filters.status && filters.status !== "" && project.status !== filters.status) {
         return false;
       }
       
       // Apply type filter (skip if "all" or empty)
-      if (filters.type && filters.type !== "all" && project.type !== filters.type) {
+      if (filters.type && filters.type !== "" && project.type !== filters.type) {
         return false;
       }
       
