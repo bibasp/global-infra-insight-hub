@@ -21,13 +21,13 @@ const Projects = () => {
         return false;
       }
       
-      // Apply status filter (skip if "all" or empty)
-      if (filters.status && filters.status !== "" && project.status !== filters.status) {
+      // Apply status filter (skip if empty)
+      if (filters.status && project.status !== filters.status) {
         return false;
       }
       
-      // Apply type filter (skip if "all" or empty)
-      if (filters.type && filters.type !== "" && project.type !== filters.type) {
+      // Apply type filter (skip if empty)
+      if (filters.type && project.type !== filters.type) {
         return false;
       }
       

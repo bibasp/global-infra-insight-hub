@@ -1,4 +1,3 @@
-
 import { Project, ProjectStatus, ProjectType, NewsItem, StatsSummary } from "../types";
 
 export const mockProjects: Project[] = [
@@ -244,6 +243,250 @@ export const mockProjects: Project[] = [
     stakeholders: ["Ørsted", "UK Department for Business, Energy and Industrial Strategy"],
     tags: ["renewable energy", "wind farm", "offshore", "energy"],
     lastUpdated: "2022-09-05"
+  },
+  {
+    id: "p11",
+    name: "California High-Speed Rail",
+    description: "First true high-speed rail system in the United States connecting Los Angeles and San Francisco.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.TRANSPORT,
+    budget: 77300000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "United States",
+      city: "Los Angeles",
+      coordinates: {
+        lat: 34.0522,
+        lng: -118.2437
+      }
+    },
+    timeline: {
+      start: "2015-01-06",
+      estimatedCompletion: "2033-12-31"
+    },
+    stakeholders: ["California High-Speed Rail Authority", "Federal Railroad Administration"],
+    tags: ["rail", "high-speed", "infrastructure", "public transport"],
+    lastUpdated: "2023-07-18"
+  },
+  {
+    id: "p12",
+    name: "Gordie Howe International Bridge",
+    description: "The longest cable-stayed bridge in North America connecting Detroit, Michigan and Windsor, Ontario.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.TRANSPORT,
+    budget: 4800000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "United States",
+      city: "Detroit",
+      coordinates: {
+        lat: 42.3314,
+        lng: -83.0458
+      }
+    },
+    timeline: {
+      start: "2018-10-05",
+      estimatedCompletion: "2025-12-31"
+    },
+    stakeholders: ["Windsor-Detroit Bridge Authority", "Michigan Department of Transportation", "Transport Canada"],
+    tags: ["bridge", "international", "infrastructure", "border crossing"],
+    lastUpdated: "2023-09-15"
+  },
+  {
+    id: "p13",
+    name: "Champlain Hudson Power Express",
+    description: "A 339-mile underground and underwater transmission line delivering 100% renewable hydropower from Canada to New York City.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.ENERGY,
+    budget: 6000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "United States",
+      city: "New York",
+      coordinates: {
+        lat: 40.7128,
+        lng: -74.0060
+      }
+    },
+    timeline: {
+      start: "2022-11-30",
+      estimatedCompletion: "2026-05-15"
+    },
+    stakeholders: ["Hydro-Québec", "Transmission Developers Inc.", "New York State Energy Research and Development Authority"],
+    tags: ["energy", "renewable", "transmission", "hydropower"],
+    lastUpdated: "2023-12-10"
+  },
+  {
+    id: "p14",
+    name: "Site C Dam",
+    description: "A major hydroelectric dam and generating station on the Peace River in northeastern British Columbia.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.WATER,
+    budget: 16000000000,
+    budgetCurrency: "CAD",
+    location: {
+      country: "Canada",
+      city: "Fort St. John",
+      coordinates: {
+        lat: 56.2500,
+        lng: -120.8480
+      }
+    },
+    timeline: {
+      start: "2015-07-27",
+      estimatedCompletion: "2025-12-31"
+    },
+    stakeholders: ["BC Hydro", "British Columbia Government", "Peace River Regional District"],
+    tags: ["dam", "hydroelectric", "energy", "water management"],
+    lastUpdated: "2023-11-05"
+  },
+  {
+    id: "p15",
+    name: "New International Airport Mexico City",
+    description: "A modern international airport serving Mexico City with state-of-the-art facilities and capacity for 68 million passengers annually.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 13000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Mexico",
+      city: "Mexico City",
+      coordinates: {
+        lat: 19.4326,
+        lng: -99.1332
+      }
+    },
+    timeline: {
+      start: "2019-04-29",
+      estimatedCompletion: "2022-03-21",
+      actualCompletion: "2022-03-21"
+    },
+    stakeholders: ["Grupo Aeroportuario de la Ciudad de México", "Federal Government of Mexico", "Secretariat of Communications and Transportation"],
+    tags: ["airport", "transportation", "aviation", "infrastructure"],
+    lastUpdated: "2022-05-15"
+  },
+  {
+    id: "p16",
+    name: "Second Avenue Subway Phase 2",
+    description: "Extension of the New York City Subway line along Second Avenue, featuring the deepest subway station in NYC.",
+    status: ProjectStatus.PLANNED,
+    type: ProjectType.TRANSPORT,
+    budget: 6300000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "United States",
+      city: "New York",
+      coordinates: {
+        lat: 40.7831,
+        lng: -73.9712
+      }
+    },
+    timeline: {
+      start: "2024-12-31",
+      estimatedCompletion: "2031-12-31"
+    },
+    stakeholders: ["Metropolitan Transportation Authority", "Federal Transit Administration", "New York City Department of Transportation"],
+    tags: ["subway", "transportation", "urban development", "public transit"],
+    lastUpdated: "2023-10-20"
+  },
+  {
+    id: "p17",
+    name: "Trans Mountain Pipeline Expansion",
+    description: "A pipeline expansion project tripling the capacity of the existing Trans Mountain pipeline from Alberta to British Columbia.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.INDUSTRIAL,
+    budget: 21400000000,
+    budgetCurrency: "CAD",
+    location: {
+      country: "Canada",
+      city: "Edmonton",
+      coordinates: {
+        lat: 53.5461,
+        lng: -113.4938
+      }
+    },
+    timeline: {
+      start: "2019-06-18",
+      estimatedCompletion: "2023-09-30",
+      actualCompletion: "2023-09-30"
+    },
+    stakeholders: ["Trans Mountain Corporation", "Government of Canada", "Alberta Energy Regulator"],
+    tags: ["pipeline", "oil", "energy", "industrial"],
+    lastUpdated: "2023-10-05"
+  },
+  {
+    id: "p18",
+    name: "I-69 Ohio River Crossing",
+    description: "A major infrastructure project featuring twin cable-stayed bridges across the Ohio River between Kentucky and Indiana.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.TRANSPORT,
+    budget: 2100000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "United States",
+      city: "Henderson",
+      coordinates: {
+        lat: 37.8361,
+        lng: -87.5900
+      }
+    },
+    timeline: {
+      start: "2021-06-22",
+      estimatedCompletion: "2027-12-31"
+    },
+    stakeholders: ["Kentucky Transportation Cabinet", "Indiana Department of Transportation", "Federal Highway Administration"],
+    tags: ["bridge", "highway", "infrastructure", "interstate"],
+    lastUpdated: "2023-08-15"
+  },
+  {
+    id: "p19",
+    name: "Puerto Vallarta Water Treatment",
+    description: "A comprehensive water treatment facility improving water quality and supply for Puerto Vallarta and surrounding areas.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.WATER,
+    budget: 450000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Mexico",
+      city: "Puerto Vallarta",
+      coordinates: {
+        lat: 20.6534,
+        lng: -105.2253
+      }
+    },
+    timeline: {
+      start: "2018-03-15",
+      estimatedCompletion: "2021-08-30",
+      actualCompletion: "2021-08-30"
+    },
+    stakeholders: ["SEAPAL Vallarta", "Jalisco State Government", "National Water Commission"],
+    tags: ["water", "treatment", "infrastructure", "sustainability"],
+    lastUpdated: "2021-09-10"
+  },
+  {
+    id: "p20",
+    name: "Houston Ship Channel Expansion",
+    description: "A major dredging and widening project creating the deepest channel on the US Gulf Coast to accommodate larger vessels.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.INDUSTRIAL,
+    budget: 1000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "United States",
+      city: "Houston",
+      coordinates: {
+        lat: 29.7604,
+        lng: -95.3698
+      }
+    },
+    timeline: {
+      start: "2020-05-03",
+      estimatedCompletion: "2023-06-30",
+      actualCompletion: "2023-06-30"
+    },
+    stakeholders: ["Port of Houston Authority", "US Army Corps of Engineers", "Texas Department of Transportation"],
+    tags: ["port", "shipping", "dredging", "maritime"],
+    lastUpdated: "2023-07-15"
   }
 ];
 
@@ -357,7 +600,7 @@ export const mockStatsSummary: StatsSummary = {
   byRegion: {
     "Asia": 4,
     "Europe": 3,
-    "North America": 1,
+    "North America": 10,
     "Middle East": 1,
     "Australia": 1
   },
