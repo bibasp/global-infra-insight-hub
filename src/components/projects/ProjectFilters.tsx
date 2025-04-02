@@ -30,8 +30,8 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
   const resetFilters = () => {
     const resetFilters = {
       search: "",
-      status: "" as const,
-      type: "" as const
+      status: "" as ProjectStatus | "",
+      type: "" as ProjectType | ""
     };
     setFilters(resetFilters);
     onFilterChange(resetFilters);

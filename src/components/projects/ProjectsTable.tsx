@@ -4,6 +4,7 @@ import { ProjectStatusBadge } from "./ProjectStatusBadge";
 import { Project } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import { formatDistanceToNow } from "date-fns";
+import { Link } from "react-router-dom";
 
 interface ProjectsTableProps {
   projects: Project[];
@@ -44,7 +45,14 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
         <TableBody>
           {projects.map((project) => (
             <TableRow key={project.id} className="hover:bg-muted/50">
-              <TableCell className="font-medium">{project.name}</TableCell>
+              <TableCell className="font-medium">
+                <Link 
+                  to={`/project/${project.id}`} 
+                  className="hover:underline text-foreground hover:text-blue-600"
+                >
+                  {project.name}
+                </Link>
+              </TableCell>
               <TableCell>
                 <Badge variant="outline" className="bg-background">
                   {project.type}

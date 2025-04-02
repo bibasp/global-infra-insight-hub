@@ -1,5 +1,5 @@
 
-import { ArrowLeftRight, Globe, Home, BarChart3, Newspaper, Database, Settings } from "lucide-react";
+import { ArrowLeftRight, Globe, Home, BarChart3, Newspaper, Database, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NavLink } from "react-router-dom";
 import {
@@ -20,7 +20,7 @@ const navigation = [
   { name: "Map View", href: "/map", icon: Globe },
   { name: "News Feed", href: "/news", icon: Newspaper },
   { name: "Analytics", href: "/analytics", icon: BarChart3 },
-  { name: "Settings", href: "/settings", icon: Settings },
+  { name: "About", href: "/about", icon: Info },
 ];
 
 export function AppSidebar() {

@@ -5,83 +5,70 @@
 
 @layer base {
   :root {
-    --background: 195 25% 97%;
-    --foreground: 200 50% 20%;
-
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
-    --card-foreground: 200 50% 20%;
-
+    --card-foreground: 224 71.4% 4.1%;
     --popover: 0 0% 100%;
-    --popover-foreground: 200 50% 20%;
-
-    --primary: 200 100% 26%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 187 100% 34%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 195 25% 92%;
-    --muted-foreground: 200 30% 40%;
-
-    --accent: 187 100% 34%;
-    --accent-foreground: 210 40% 98%;
-
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 200 30% 88%;
-    --input: 200 30% 88%;
-    --ring: 200 100% 26%;
-
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
     --radius: 0.5rem;
-
-    --sidebar-background: 200 100% 15%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 187 100% 34%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 200 30% 20%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 200 30% 25%;
-    --sidebar-ring: 187 100% 45%;
+    
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 224 71.4% 4.1%;
+    --sidebar-muted: 220 14.3% 95.9%;
+    --sidebar-muted-foreground: 220 8.9% 46.1%;
+    --sidebar-accent: 220 14.3% 95.9%;
+    --sidebar-accent-foreground: 220.9 39.3% 11%;
+    --sidebar-border: 220 13% 91%;
+    
+    --infra-blue: 213 94% 68%;
+    --infra-teal: 186 82% 53%;
   }
 
   .dark {
-    --background: 200 50% 10%;
-    --foreground: 210 40% 98%;
-
-    --card: 200 50% 15%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 200 50% 15%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 187 100% 34%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 200 100% 26%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 200 30% 20%;
-    --muted-foreground: 200 20% 65%;
-
-    --accent: 200 30% 20%;
-    --accent-foreground: 210 40% 98%;
-
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
 
-    --border: 200 30% 25%;
-    --input: 200 30% 25%;
-    --ring: 200 30% 50%;
+    --sidebar-background: 224 71.4% 4.1%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-muted: 215 27.9% 16.9%;
+    --sidebar-muted-foreground: 217.9 10.6% 64.9%;
+    --sidebar-accent: 215 27.9% 16.9%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 215 27.9% 16.9%;
     
-    --sidebar-background: 200 50% 8%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 187 100% 34%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 200 30% 15%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 200 30% 20%;
-    --sidebar-ring: 187 100% 45%;
+    --infra-blue: 213 94% 68%;
+    --infra-teal: 186 82% 53%;
   }
 }
 
@@ -89,39 +76,44 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* Project Status Colors */
-.status-planned {
-  @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100;
+/* Animations for map points */
+@keyframes pulse-slow {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
 }
 
-.status-ongoing {
-  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100;
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite;
 }
 
-.status-completed {
-  @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100;
+/* Fix for Leaflet popup styles */
+.leaflet-popup-content-wrapper {
+  border-radius: 0.5rem !important;
 }
 
-.status-halted {
-  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100;
+.leaflet-popup-content {
+  margin: 0.75rem 1rem !important;
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-muted rounded;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-primary/40 rounded hover:bg-primary/60 transition-colors;
+/* Fix for Leaflet container responsiveness */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
 }
