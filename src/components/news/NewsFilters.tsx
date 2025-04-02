@@ -73,7 +73,7 @@ export function NewsFilters({ onFilterChange, sources }: NewsFiltersProps) {
             <SelectValue placeholder="All Sentiments" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Sentiments</SelectItem>
+            <SelectItem value="all">All Sentiments</SelectItem>
             <SelectItem value="positive">Positive</SelectItem>
             <SelectItem value="negative">Negative</SelectItem>
             <SelectItem value="neutral">Neutral</SelectItem>
@@ -93,7 +93,7 @@ export function NewsFilters({ onFilterChange, sources }: NewsFiltersProps) {
             <SelectValue placeholder="All Sources" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Sources</SelectItem>
+            <SelectItem value="all">All Sources</SelectItem>
             {sources.map((source) => (
               <SelectItem key={source} value={source}>
                 {source}

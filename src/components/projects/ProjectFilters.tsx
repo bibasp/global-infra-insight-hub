@@ -56,7 +56,7 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
       </div>
       <div className="w-full sm:w-1/3">
         <Select
-          value={filters.status}
+          value={filters.status || "all"}
           onValueChange={(value) => {
             // Convert "all" to empty string for filter logic
             const newValue = value === "all" ? "" : value as ProjectStatus;
@@ -79,7 +79,7 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
       </div>
       <div className="w-full sm:w-1/3">
         <Select
-          value={filters.type}
+          value={filters.type || "all"}
           onValueChange={(value) => {
             // Convert "all" to empty string for filter logic
             const newValue = value === "all" ? "" : value as ProjectType;

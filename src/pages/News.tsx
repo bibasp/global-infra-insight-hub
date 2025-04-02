@@ -23,13 +23,13 @@ const News = () => {
         return false;
       }
       
-      // Apply sentiment filter
-      if (filters.sentiment && news.sentiment !== filters.sentiment) {
+      // Apply sentiment filter (skip if "all")
+      if (filters.sentiment && filters.sentiment !== "all" && news.sentiment !== filters.sentiment) {
         return false;
       }
       
-      // Apply source filter
-      if (filters.source && news.source !== filters.source) {
+      // Apply source filter (skip if "all")
+      if (filters.source && filters.source !== "all" && news.source !== filters.source) {
         return false;
       }
       
