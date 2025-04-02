@@ -1,186 +1,233 @@
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { mockProjects, mockStatsSummary } from "@/data/mockData";
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
-import { CircleDollarSign, Clock, Building2, BarChart as BarChartIcon } from "lucide-react";
-import { StatCard } from "@/components/dashboard/StatCard";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
+import { useEffect, useState } from "react";
 import { ProjectStatus, ProjectType } from "@/types";
+import { mockProjects } from "@/data/mockData";
+
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
 
 const Analytics = () => {
-  const budgetByType = Object.values(ProjectType).map(type => ({
-    name: type,
-    value: mockProjects
-      .filter(p => p.type === type)
-      .reduce((acc, curr) => {
-        // Convert to USD for simplicity (this would be more complex in a real app)
-        let usdValue = curr.budget;
-        if (curr.budgetCurrency === "EUR") usdValue = curr.budget * 1.1;
-        if (curr.budgetCurrency === "GBP") usdValue = curr.budget * 1.3;
-        if (curr.budgetCurrency === "CNY") usdValue = curr.budget * 0.14;
-        if (curr.budgetCurrency === "AUD") usdValue = curr.budget * 0.67;
-        if (curr.budgetCurrency === "INR") usdValue = curr.budget * 0.012;
-        return acc + usdValue;
-      }, 0) / 1e9 // Convert to billions
-  }));
+  const [projectsByStatus, setProjectsByStatus] = useState<{ name: string; value: number }[]>([]);
+  const [projectsByType, setProjectsByType] = useState<{ name: string; value: number }[]>([]);
+  const [budgetByType, setBudgetByType] = useState<{ name: string; value: number }[]>([]);
+  const [monthlyProgress, setMonthlyProgress] = useState<{ month: string; completed: number; ongoing: number }[]>([]);
 
-  const projectTimeline = [
-    { month: "Jan", count: 1 },
-    { month: "Feb", count: 2 },
-    { month: "Mar", count: 4 },
-    { month: "Apr", count: 3 },
-    { month: "May", count: 5 },
-    { month: "Jun", count: 7 },
-    { month: "Jul", count: 8 },
-    { month: "Aug", count: 10 },
-    { month: "Sep", count: 9 },
-    { month: "Oct", count: 8 },
-    { month: "Nov", count: 10 },
-    { month: "Dec", count: 10 },
-  ];
+  useEffect(() => {
+    // Transform data for status chart
+    const statusCounts = Object.values(ProjectStatus).reduce((acc, status) => {
+      acc[status] = mockProjects.filter(project => project.status === status).length;
+      return acc;
+    }, {} as Record<string, number>);
+    
+    setProjectsByStatus(
+      Object.entries(statusCounts).map(([name, value]) => ({ name, value }))
+    );
 
-  const completionRate = [
-    { year: "2020", rate: 72 },
-    { year: "2021", rate: 68 },
-    { year: "2022", rate: 75 },
-    { year: "2023", rate: 82 },
-    { year: "2024", rate: 78 },
-  ];
+    // Transform data for type chart
+    const typeCounts = Object.values(ProjectType).reduce((acc, type) => {
+      acc[type] = mockProjects.filter(project => project.type === type).length;
+      return acc;
+    }, {} as Record<string, number>);
+    
+    setProjectsByType(
+      Object.entries(typeCounts).map(([name, value]) => ({ name, value }))
+    );
 
-  const regionData = Object.entries(mockStatsSummary.byRegion).map(([name, value]) => ({
-    name,
-    value
-  }));
+    // Transform data for budget chart
+    const budgetByTypeData = Object.values(ProjectType).reduce((acc, type) => {
+      acc[type] = mockProjects
+        .filter(project => project.type === type)
+        .reduce((sum, project) => sum + project.budget, 0);
+      return acc;
+    }, {} as Record<string, number>);
+    
+    setBudgetByType(
+      Object.entries(budgetByTypeData).map(([name, value]) => ({ name, value }))
+    );
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
+    // Monthly progress data (mock data)
+    setMonthlyProgress([
+      { month: "Jan", completed: 2, ongoing: 5 },
+      { month: "Feb", completed: 3, ongoing: 7 },
+      { month: "Mar", completed: 5, ongoing: 8 },
+      { month: "Apr", completed: 7, ongoing: 9 },
+      { month: "May", completed: 8, ongoing: 10 },
+      { month: "Jun", completed: 10, ongoing: 8 },
+    ]);
+  }, []);
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-background p-2 border border-border rounded-md shadow-sm">
+          <p className="font-medium">{`${label}`}</p>
+          {payload.map((entry: any, index: number) => (
+            <p key={`item-${index}`} style={{ color: entry.color }}>
+              {`${entry.name}: ${typeof entry.value === 'number' ? entry.value.toLocaleString(undefined, { 
+                maximumFractionDigits: 2 
+              }) : entry.value}`}
+            </p>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">Analytics</h1>
-        <p className="text-muted-foreground">
-          Insights and trends for infrastructure projects
-        </p>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Analytics Dashboard</h1>
+          <p className="text-muted-foreground">Visualize and analyze global infrastructure data.</p>
+        </div>
       </div>
 
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        <StatCard
-          title="Average Budget"
-          value="$16.4B"
-          description="Per project (USD equivalent)"
-          icon={CircleDollarSign}
-          trend={{ direction: "up", value: "+12% YoY" }}
-        />
-        <StatCard
-          title="Avg. Completion Time"
-          value="36.5 months"
-          description="From start to finish"
-          icon={Clock}
-          trend={{ direction: "down", value: "-2.3 months" }}
-        />
-        <StatCard
-          title="On-Budget Projects"
-          value="67%"
-          description="Projects within 10% of budget"
-          icon={BarChartIcon}
-          trend={{ direction: "up", value: "+5% YoY" }}
-        />
-        <StatCard
-          title="Completion Rate"
-          value="78%"
-          description="Projects completed on schedule"
-          icon={Building2}
-          trend={{ direction: "neutral", value: "No change" }}
-        />
-      </div>
-
-      <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Budget Allocation by Project Type</CardTitle>
-            <CardDescription>Total budget in billions USD</CardDescription>
-          </CardHeader>
-          <CardContent className="h-[350px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={budgetByType} layout="horizontal">
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip formatter={(value) => [`$${value.toFixed(2)}B`, "Budget"]} />
-                <Legend />
-                <Bar dataKey="value" name="Budget (Billions USD)" fill="#0093b0" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Active Projects Over Time</CardTitle>
-            <CardDescription>Monthly count for current year</CardDescription>
-          </CardHeader>
-          <CardContent className="h-[350px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={projectTimeline}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="count" name="Active Projects" stroke="#005f85" strokeWidth={2} dot={{ r: 4 }} />
-              </LineChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Project Completion Rate Trends</CardTitle>
-            <CardDescription>Percentage of projects completed on schedule</CardDescription>
-          </CardHeader>
-          <CardContent className="h-[350px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={completionRate}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" />
-                <YAxis domain={[60, 90]} tickFormatter={(tick) => `${tick}%`} />
-                <Tooltip formatter={(value) => [`${value}%`, "Completion Rate"]} />
-                <Legend />
-                <Line type="monotone" dataKey="rate" name="On-time Completion %" stroke="#ff7e00" strokeWidth={2} dot={{ r: 4 }} />
-              </LineChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Projects by Region</CardTitle>
-            <CardDescription>Distribution across global regions</CardDescription>
-          </CardHeader>
-          <CardContent className="h-[350px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={regionData}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  outerRadius={120}
-                  fill="#8884d8"
-                  dataKey="value"
-                  nameKey="name"
-                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                >
-                  {regionData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip formatter={(value) => [value, "Count"]} />
-                <Legend layout="vertical" verticalAlign="bottom" align="center" />
-              </PieChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-      </div>
+      <Tabs defaultValue="overview" className="w-full">
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="status">Status Analysis</TabsTrigger>
+          <TabsTrigger value="budget">Budget Analysis</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="overview" className="space-y-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Projects by Status</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="h-[300px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={projectsByStatus}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        outerRadius={100}
+                        fill="#8884d8"
+                        dataKey="value"
+                        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                      >
+                        {projectsByStatus.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                      </Pie>
+                      <Tooltip content={<CustomTooltip />} />
+                      <Legend />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle>Projects by Type</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="h-[300px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={projectsByType}
+                      margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Bar dataKey="value" fill="#0088FE" name="Count" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+        
+        <TabsContent value="status" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Monthly Project Progress</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[400px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={monthlyProgress}
+                    margin={{
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Legend />
+                    <Line type="monotone" dataKey="completed" stroke="#00C49F" name="Completed" />
+                    <Line type="monotone" dataKey="ongoing" stroke="#0088FE" name="Ongoing" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="budget" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Budget Allocation by Project Type</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[400px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={budgetByType}
+                    margin={{
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Legend />
+                    <Bar dataKey="value" fill="#FFBB28" name="Budget (USD)" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

@@ -7,12 +7,11 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SidebarNav,
-  SidebarNavHeader,
-  SidebarNavHeaderTitle,
-  SidebarNavLink,
-  SidebarNavList,
-  SidebarNavListItem,
+  SidebarMenu,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenuItem,
+  SidebarMenuButton,
 } from "@/components/ui/sidebar";
 
 const navigation = [
@@ -38,14 +37,12 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
       <SidebarContent className="pt-4">
-        <SidebarNav>
-          <SidebarNavHeader>
-            <SidebarNavHeaderTitle>Navigation</SidebarNavHeaderTitle>
-          </SidebarNavHeader>
-          <SidebarNavList>
+        <SidebarGroup>
+          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarMenu>
             {navigation.map((item) => (
-              <SidebarNavListItem key={item.name}>
-                <SidebarNavLink asChild>
+              <SidebarMenuItem key={item.name}>
+                <SidebarMenuButton asChild tooltip={item.name}>
                   <NavLink
                     to={item.href}
                     className={({ isActive }) =>
@@ -56,11 +53,11 @@ export function AppSidebar() {
                     <item.icon className="h-5 w-5" />
                     <span>{item.name}</span>
                   </NavLink>
-                </SidebarNavLink>
-              </SidebarNavListItem>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             ))}
-          </SidebarNavList>
-        </SidebarNav>
+          </SidebarMenu>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="border-t border-sidebar-border/50 p-4">
         <div className="flex items-center justify-between">

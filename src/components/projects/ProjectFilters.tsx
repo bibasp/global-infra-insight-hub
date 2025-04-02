@@ -1,8 +1,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ProjectStatus, ProjectType } from "@/types";
-import { Search, Filter, X } from "lucide-react";
 import { 
   Select,
   SelectContent,
@@ -10,67 +8,62 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import { useState } from "react";
+import { ProjectStatus, ProjectType } from "@/types";
+import { X } from "lucide-react";
 
 interface ProjectFiltersProps {
-  onFilterChange: (filters: {
+  filters: {
+    search: string;
+    status: ProjectStatus | "";
+    type: ProjectType | "";
+  };
+  setFilters: React.Dispatch<React.SetStateAction<{
+    search: string;
+    status: ProjectStatus | "";
+    type: ProjectType | "";
+  }>>;
+  handleFilterChange: (filters: {
     search: string;
     status: ProjectStatus | "";
     type: ProjectType | "";
   }) => void;
 }
 
-export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
-  const [filters, setFilters] = useState({
-    search: "",
-    status: "" as ProjectStatus | "",
-    type: "" as ProjectType | "",
-  });
-
-  const handleFilterChange = (key: keyof typeof filters, value: any) => {
-    const newFilters = { ...filters, [key]: value };
-    setFilters(newFilters);
-    onFilterChange(newFilters);
-  };
-
-  const handleReset = () => {
+export function ProjectFilters({ filters, setFilters, handleFilterChange }: ProjectFiltersProps) {
+  const resetFilters = () => {
     const resetFilters = {
       search: "",
-      status: "",
-      type: "",
+      status: "" as const,
+      type: "" as const
     };
     setFilters(resetFilters);
-    onFilterChange(resetFilters);
+    handleFilterChange(resetFilters);
   };
 
   return (
-    <div className="flex flex-col space-y-4 md:flex-row md:items-end md:space-x-4 md:space-y-0">
-      <div className="flex-1 space-y-1">
-        <label htmlFor="search" className="text-sm font-medium">
-          Search
-        </label>
-        <div className="relative">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            id="search"
-            placeholder="Search by project name, location..."
-            className="pl-8"
-            value={filters.search}
-            onChange={(e) => handleFilterChange("search", e.target.value)}
-          />
-        </div>
+    <div className="flex flex-col gap-4 sm:flex-row items-start sm:items-center mb-6">
+      <div className="w-full sm:w-1/3">
+        <Input
+          placeholder="Search projects..."
+          value={filters.search}
+          onChange={(e) => {
+            const newFilters = { ...filters, search: e.target.value };
+            setFilters(newFilters);
+            handleFilterChange(newFilters);
+          }}
+        />
       </div>
-      
-      <div className="w-full md:w-[180px] space-y-1">
-        <label htmlFor="status-filter" className="text-sm font-medium">
-          Status
-        </label>
+      <div className="w-full sm:w-1/3">
         <Select
           value={filters.status}
-          onValueChange={(value) => handleFilterChange("status", value)}
+          onValueChange={(value) => {
+            const newFilters = { ...filters, status: value as ProjectStatus | "" };
+            setFilters(newFilters);
+            handleFilterChange(newFilters);
+          }}
         >
-          <SelectTrigger id="status-filter">
-            <SelectValue placeholder="All Statuses" />
+          <SelectTrigger>
+            <SelectValue placeholder="Filter by status" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="">All Statuses</SelectItem>
@@ -82,17 +75,17 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
           </SelectContent>
         </Select>
       </div>
-      
-      <div className="w-full md:w-[180px] space-y-1">
-        <label htmlFor="type-filter" className="text-sm font-medium">
-          Type
-        </label>
+      <div className="w-full sm:w-1/3">
         <Select
           value={filters.type}
-          onValueChange={(value) => handleFilterChange("type", value)}
+          onValueChange={(value) => {
+            const newFilters = { ...filters, type: value as ProjectType | "" };
+            setFilters(newFilters);
+            handleFilterChange(newFilters);
+          }}
         >
-          <SelectTrigger id="type-filter">
-            <SelectValue placeholder="All Types" />
+          <SelectTrigger>
+            <SelectValue placeholder="Filter by type" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="">All Types</SelectItem>
@@ -104,15 +97,9 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
           </SelectContent>
         </Select>
       </div>
-      
-      <Button
-        variant="outline"
-        className="flex items-center gap-1"
-        onClick={handleReset}
-        disabled={!filters.search && !filters.status && !filters.type}
-      >
+      <Button variant="outline" size="icon" onClick={resetFilters} className="ml-auto">
         <X className="h-4 w-4" />
-        Reset
+        <span className="sr-only">Reset filters</span>
       </Button>
     </div>
   );
