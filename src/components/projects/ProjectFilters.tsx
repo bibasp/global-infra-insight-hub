@@ -66,7 +66,7 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
             <SelectValue placeholder="Filter by status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Statuses</SelectItem>
+            <SelectItem value="all">All Statuses</SelectItem>
             {Object.values(ProjectStatus).map((status) => (
               <SelectItem key={status} value={status}>
                 {status}
@@ -87,7 +87,7 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
             <SelectValue placeholder="Filter by type" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Types</SelectItem>
+            <SelectItem value="all">All Types</SelectItem>
             {Object.values(ProjectType).map((type) => (
               <SelectItem key={type} value={type}>
                 {type}
