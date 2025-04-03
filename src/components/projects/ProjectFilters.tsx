@@ -9,12 +9,11 @@ interface ProjectFiltersProps {
   onFilterChange: (filters: {
     search: string;
     status: ProjectStatus | "all";
-    type?: ProjectType | "all";
+    type: ProjectType | "all";
   }) => void;
-  hideTypeFilter?: boolean;
 }
 
-export function ProjectFilters({ onFilterChange, hideTypeFilter = false }: ProjectFiltersProps) {
+export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<ProjectStatus | "all">("all");
   const [type, setType] = useState<ProjectType | "all">("all");
@@ -35,20 +34,19 @@ export function ProjectFilters({ onFilterChange, hideTypeFilter = false }: Proje
   };
 
   return (
-    <div className={`grid gap-5 ${hideTypeFilter ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-3'}`}>
-      <div className="space-y-2">
-        <Label htmlFor="search" className="font-medium">Search</Label>
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
+      <div>
+        <Label htmlFor="search">Search</Label>
         <Input
           type="search"
           id="search"
           placeholder="Search projects..."
           value={search}
           onChange={handleSearchChange}
-          className="border-gray-300 focus:border-bibas-blue"
         />
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="status" className="font-medium">Status</Label>
+      <div>
+        <Label htmlFor="status">Status</Label>
         <Select onValueChange={handleStatusChange}>
           <SelectTrigger className="w-full">
             <SelectValue placeholder="All Statuses" />
@@ -62,25 +60,23 @@ export function ProjectFilters({ onFilterChange, hideTypeFilter = false }: Proje
           </SelectContent>
         </Select>
       </div>
-      {!hideTypeFilter && (
-        <div className="space-y-2">
-          <Label htmlFor="type" className="font-medium">Type</Label>
-          <Select onValueChange={handleTypeChange}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="All Types" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Types</SelectItem>
-              <SelectItem value={ProjectType.TRANSPORT}>{ProjectType.TRANSPORT}</SelectItem>
-              <SelectItem value={ProjectType.ENERGY}>{ProjectType.ENERGY}</SelectItem>
-              <SelectItem value={ProjectType.WATER}>{ProjectType.WATER}</SelectItem>
-              <SelectItem value={ProjectType.BUILDINGS}>{ProjectType.BUILDINGS}</SelectItem>
-              <SelectItem value={ProjectType.INDUSTRIAL}>{ProjectType.INDUSTRIAL}</SelectItem>
-              <SelectItem value={ProjectType.OTHER}>{ProjectType.OTHER}</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      )}
+      <div>
+        <Label htmlFor="type">Type</Label>
+        <Select onValueChange={handleTypeChange}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="All Types" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Types</SelectItem>
+            <SelectItem value={ProjectType.TRANSPORT}>{ProjectType.TRANSPORT}</SelectItem>
+            <SelectItem value={ProjectType.ENERGY}>{ProjectType.ENERGY}</SelectItem>
+            <SelectItem value={ProjectType.WATER}>{ProjectType.WATER}</SelectItem>
+            <SelectItem value={ProjectType.BUILDINGS}>{ProjectType.BUILDINGS}</SelectItem>
+            <SelectItem value={ProjectType.INDUSTRIAL}>{ProjectType.INDUSTRIAL}</SelectItem>
+            <SelectItem value={ProjectType.OTHER}>{ProjectType.OTHER}</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
     </div>
   );
 }

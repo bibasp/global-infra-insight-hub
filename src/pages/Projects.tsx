@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { ProjectsTable } from "@/components/projects/ProjectsTable";
 import { ProjectFilters } from "@/components/projects/ProjectFilters";
-import { ProjectBranchNav } from "@/components/projects/ProjectBranchNav";
 import { mockProjects } from "@/data/mockData";
 import { Project, ProjectStatus, ProjectType } from "@/types";
 
@@ -36,17 +35,15 @@ const Projects = () => {
   };
 
   return (
-    <div className="container mx-auto space-y-6 py-8">
+    <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2 font-playfair">Global Infrastructure Projects</h1>
+        <h1 className="text-3xl font-bold mb-2">Infrastructure Projects</h1>
         <p className="text-gray-600 dark:text-gray-400">
           Browse and filter global infrastructure initiatives across various sectors
         </p>
       </div>
 
       <div className="bg-white dark:bg-gray-900 border rounded-lg p-6 shadow-sm">
-        <ProjectBranchNav />
-        
         <ProjectFilters onFilterChange={handleFilterChange} />
         
         <div className="mt-6">
