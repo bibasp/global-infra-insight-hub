@@ -9,11 +9,12 @@ interface ProjectFiltersProps {
   onFilterChange: (filters: {
     search: string;
     status: ProjectStatus | "all";
-    type: ProjectType | "all";
+    type?: ProjectType | "all";
   }) => void;
+  hideTypeFilter?: boolean;
 }
 
-export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
+export function ProjectFilters({ onFilterChange, hideTypeFilter = false }: ProjectFiltersProps) {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<ProjectStatus | "all">("all");
   const [type, setType] = useState<ProjectType | "all">("all");
@@ -34,7 +35,7 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
   };
 
   return (
-    <div className="grid gap-5 grid-cols-1 md:grid-cols-3">
+    <div className={`grid gap-5 ${hideTypeFilter ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-3'}`}>
       <div className="space-y-2">
         <Label htmlFor="search" className="font-medium">Search</Label>
         <Input
@@ -61,23 +62,25 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
           </SelectContent>
         </Select>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="type" className="font-medium">Type</Label>
-        <Select onValueChange={handleTypeChange}>
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="All Types" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Types</SelectItem>
-            <SelectItem value={ProjectType.TRANSPORT}>{ProjectType.TRANSPORT}</SelectItem>
-            <SelectItem value={ProjectType.ENERGY}>{ProjectType.ENERGY}</SelectItem>
-            <SelectItem value={ProjectType.WATER}>{ProjectType.WATER}</SelectItem>
-            <SelectItem value={ProjectType.BUILDINGS}>{ProjectType.BUILDINGS}</SelectItem>
-            <SelectItem value={ProjectType.INDUSTRIAL}>{ProjectType.INDUSTRIAL}</SelectItem>
-            <SelectItem value={ProjectType.OTHER}>{ProjectType.OTHER}</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+      {!hideTypeFilter && (
+        <div className="space-y-2">
+          <Label htmlFor="type" className="font-medium">Type</Label>
+          <Select onValueChange={handleTypeChange}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="All Types" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Types</SelectItem>
+              <SelectItem value={ProjectType.TRANSPORT}>{ProjectType.TRANSPORT}</SelectItem>
+              <SelectItem value={ProjectType.ENERGY}>{ProjectType.ENERGY}</SelectItem>
+              <SelectItem value={ProjectType.WATER}>{ProjectType.WATER}</SelectItem>
+              <SelectItem value={ProjectType.BUILDINGS}>{ProjectType.BUILDINGS}</SelectItem>
+              <SelectItem value={ProjectType.INDUSTRIAL}>{ProjectType.INDUSTRIAL}</SelectItem>
+              <SelectItem value={ProjectType.OTHER}>{ProjectType.OTHER}</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      )}
     </div>
   );
 }
