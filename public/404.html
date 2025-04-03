@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    const path = window.location.pathname;
+    const repo = '/global-infra-insight-hub';
+    
+    if (path.indexOf(repo) === 0) {
+      sessionStorage.redirect = path.substring(repo.length);
+    } else {
+      sessionStorage.redirect = path;
+    }
+    
+    window.location.href = window.location.origin + repo + '/';
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>
