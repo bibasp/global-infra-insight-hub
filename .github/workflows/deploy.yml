@@ -26,5 +26,5 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: build # or dist, depending on your build output directory
+          folder: dist # Changed from build to dist (Vite's default output directory)
           branch: gh-pages
