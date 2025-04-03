@@ -9,6 +9,8 @@ import { BarChart3, Globe, Building2, TrendingUp, CircleDollarSign } from "lucid
 import { mockProjects, mockNews, mockStatsSummary } from "@/data/mockData";
 import { ProjectStatus, ProjectType } from "@/types";
 import { useMemo } from "react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const statusChartData = Object.entries(mockStatsSummary.byStatus).map(([status, value]) => ({
@@ -30,7 +32,7 @@ const Dashboard = () => {
       const northAmerica = ["USA", "Canada", "Mexico"];
       const southAmerica = ["Brazil", "Argentina", "Chile", "Peru", "Bolivia", "Venezuela", "Colombia"];
       const europe = ["UK", "Germany", "France", "Spain", "Italy", "Switzerland", "Croatia", "Denmark", "Serbia"];
-      const asia = ["China", "Japan", "India", "South Korea", "Vietnam"];
+      const asia = ["China", "Japan", "India", "South Korea", "Vietnam", "Nepal"];
       const oceania = ["Australia", "New Zealand"];
       const africa = ["Egypt", "South Africa", "Kenya", "Nigeria", "Tanzania", "Cameroon", "Congo", "DRC", "Morocco", "Algeria"];
       
@@ -64,10 +66,10 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground">
-          Global infrastructure projects overview and analytics
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Global Infrastructure Insight Hub</h1>
+        <p className="text-gray-600 dark:text-gray-400 mt-2">
+          Explore and analyze infrastructure projects from around the world with comprehensive data and visualizations.
         </p>
       </div>
 
@@ -101,12 +103,17 @@ const Dashboard = () => {
         />
       </div>
 
-      <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
-        <GlobalProjectMap projects={mockProjects} />
-        <RecentNewsCard news={recentNews} />
+      <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
+        <div className="border rounded-lg p-6 bg-white dark:bg-gray-900 shadow-sm">
+          <h2 className="text-xl font-semibold mb-4">Global Project Distribution</h2>
+          <GlobalProjectMap projects={mockProjects} />
+        </div>
+        <div>
+          <RecentNewsCard news={recentNews} />
+        </div>
       </div>
 
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
         <div className="md:col-span-1">
           <ProjectsByContinent data={continentData} />
         </div>
@@ -116,6 +123,14 @@ const Dashboard = () => {
         <div className="md:col-span-1">
           <ProjectTypeChart data={typeChartData} />
         </div>
+      </div>
+
+      <div className="flex justify-center mt-8">
+        <Link to="/projects">
+          <Button className="bibas-button">
+            Browse All Projects
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -1,53 +1,54 @@
 
+import { useState } from "react";
 import { ProjectsTable } from "@/components/projects/ProjectsTable";
 import { ProjectFilters } from "@/components/projects/ProjectFilters";
 import { mockProjects } from "@/data/mockData";
-import { ProjectStatus, ProjectType } from "@/types";
-import { useState, useMemo } from "react";
+import { Project, ProjectStatus, ProjectType } from "@/types";
 
 const Projects = () => {
-  const [filters, setFilters] = useState({
-    search: "",
-    status: "" as ProjectStatus | "",
-    type: "" as ProjectType | "",
-  });
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>(mockProjects);
+  const [view, setView] = useState<"list" | "grid" | "map">("list");
 
-  const filteredProjects = useMemo(() => {
-    return mockProjects.filter((project) => {
-      // Apply search filter
-      if (filters.search && !project.name.toLowerCase().includes(filters.search.toLowerCase()) &&
-          !project.location.country.toLowerCase().includes(filters.search.toLowerCase()) &&
-          !(project.location.city && project.location.city.toLowerCase().includes(filters.search.toLowerCase()))) {
-        return false;
-      }
-      
-      // Apply status filter (skip if empty)
-      if (filters.status && project.status !== filters.status) {
-        return false;
-      }
-      
-      // Apply type filter (skip if empty)
-      if (filters.type && project.type !== filters.type) {
-        return false;
-      }
-      
-      return true;
+  const handleFilterChange = (filters: {
+    search: string;
+    status: ProjectStatus | "";
+    type: ProjectType | "";
+  }) => {
+    const filtered = mockProjects.filter((project) => {
+      // Search filter
+      const searchMatch =
+        filters.search === "" ||
+        project.name.toLowerCase().includes(filters.search.toLowerCase()) ||
+        project.description.toLowerCase().includes(filters.search.toLowerCase()) ||
+        project.location.country.toLowerCase().includes(filters.search.toLowerCase());
+
+      // Status filter
+      const statusMatch = filters.status === "" || project.status === filters.status;
+
+      // Type filter
+      const typeMatch = filters.type === "" || project.type === filters.type;
+
+      return searchMatch && statusMatch && typeMatch;
     });
-  }, [filters]);
+
+    setFilteredProjects(filtered);
+  };
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Projects</h1>
-        <p className="text-muted-foreground">
-          View and manage infrastructure projects
+        <h1 className="text-3xl font-bold mb-2">Infrastructure Projects</h1>
+        <p className="text-gray-600 dark:text-gray-400">
+          Browse and filter global infrastructure initiatives across various sectors
         </p>
       </div>
 
-      <ProjectFilters onFilterChange={setFilters} />
-
-      <div className="bg-card rounded-lg shadow-sm">
-        <ProjectsTable projects={filteredProjects} />
+      <div className="bg-white dark:bg-gray-900 border rounded-lg p-6 shadow-sm">
+        <ProjectFilters onFilterChange={handleFilterChange} />
+        
+        <div className="mt-6">
+          <ProjectsTable projects={filteredProjects} />
+        </div>
       </div>
     </div>
   );

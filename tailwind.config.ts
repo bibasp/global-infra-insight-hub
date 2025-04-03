@@ -63,12 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				infra: {
-					blue: '#005f85',
-					teal: '#0093b0',
-					light: '#e6f5fa',
-					dark: '#003955',
-					accent: '#ff7e00',
+				bibas: {
+					blue: '#2680C2',
+					lightBlue: '#4299E1',
+					darkBlue: '#1A365D',
+					gray: '#4A5568',
+					lightGray: '#E2E8F0',
+					background: '#F7FAFC',
 				}
 			},
 			borderRadius: {

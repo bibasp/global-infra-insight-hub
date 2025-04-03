@@ -1,152 +1,84 @@
 
-import { Building2, Globe, BarChart3, MapPin, LayoutDashboard } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8 max-w-4xl mx-auto">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">About Infrastructure Insight</h1>
-        <p className="text-muted-foreground mt-1">
-          A global perspective on infrastructure megaprojects
+        <h1 className="text-3xl font-bold mb-2">About This Project</h1>
+        <p className="text-gray-600 dark:text-gray-400">
+          Learn about the Global Infrastructure Insight Hub and its purpose
         </p>
       </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <div className="flex items-center gap-2">
-              <LayoutDashboard className="h-5 w-5 text-infra-teal" />
-              <CardTitle>Our Mission</CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              Infrastructure Insight provides comprehensive data and analysis on global infrastructure megaprojects. 
-              Our mission is to increase transparency and understanding of major infrastructure developments worldwide, 
-              supporting better decision-making for stakeholders including governments, investors, engineers, and the public.
+
+      <Card>
+        <CardContent className="pt-6">
+          <div className="prose dark:prose-invert max-w-none">
+            <h2>Global Infrastructure Insight Hub</h2>
+            <p>
+              The Global Infrastructure Insight Hub is a comprehensive platform designed to track, analyze, and 
+              visualize major infrastructure projects around the world. This platform serves as a centralized 
+              repository of information for civil engineers, project managers, researchers, investors, and 
+              policymakers interested in global infrastructure development.
             </p>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardHeader>
-            <div className="flex items-center gap-2">
-              <Globe className="h-5 w-5 text-infra-teal" />
-              <CardTitle>Global Coverage</CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              We track infrastructure megaprojects across all continents and sectors, from transportation 
-              and energy to buildings and industrial facilities. Our database includes both public and 
-              private sector initiatives with detailed information on budgets, timelines, and technical specifications.
+
+            <h3>Our Purpose</h3>
+            <p>
+              As a Civil Engineer with experience in infrastructure projects, I created this platform to address 
+              the need for accessible, organized, and detailed information about major infrastructure initiatives. 
+              The platform aims to:
             </p>
-          </CardContent>
-        </Card>
+
+            <ul>
+              <li>Provide comprehensive data on global infrastructure projects across various sectors</li>
+              <li>Track project progress, budgets, technical specifications, and timelines</li>
+              <li>Analyze trends in infrastructure development by region, type, and status</li>
+              <li>Serve as an educational resource for students and professionals in civil engineering</li>
+              <li>Highlight innovations and best practices in infrastructure development</li>
+            </ul>
+
+            <h3>About the Developer</h3>
+            <p>
+              Hi, I am a Civil Engineer (NEC Registered) with interests in different types of infrastructure, 
+              their resilience, and connectivity. At present, I am contributing to the digitization in the AEC 
+              industry, serving as the GIS Expert in the largest potable water supply distribution project of Nepal. 
+              When I'm not working, I love to explore GIS, BIM, programming, and IoT, as I see their potential 
+              on transforming the way we operate in the AEC industry. From Spatial Analysis to Computer Vision, 
+              I have interests in newer and efficient methods of data collection, data management, data analysis, 
+              and help in decision making for infrastructure works.
+            </p>
+
+            <h3>Data Sources</h3>
+            <p>
+              The information presented on this platform is collected from a variety of reputable sources, including:
+            </p>
+            <ul>
+              <li>Official government publications and project websites</li>
+              <li>International development organizations and multilateral institutions</li>
+              <li>Industry reports and academic publications</li>
+              <li>News articles and press releases from project developers</li>
+              <li>Personal research and professional networks</li>
+            </ul>
+
+            <p>
+              While we strive for accuracy and thoroughness, the dynamic nature of infrastructure projects means 
+              that some information may change over time. We welcome contributions, corrections, and updates from 
+              users who have specific knowledge about any of the projects featured on this platform.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="flex justify-center mt-4">
+        <a 
+          href="https://bibaspokhrel.com.np" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="bibas-button-outline"
+        >
+          Visit My Personal Website
+        </a>
       </div>
-      
-      <Card>
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <Building2 className="h-5 w-5 text-infra-teal" />
-            <CardTitle>Key Features</CardTitle>
-          </div>
-          <CardDescription>
-            Explore our platform's capabilities
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <LayoutDashboard className="h-4 w-4 text-infra-teal" />
-                <h3 className="font-medium">Dashboard</h3>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Get a high-level overview of global infrastructure development with 
-                real-time statistics and visualizations.
-              </p>
-            </div>
-            
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <Building2 className="h-4 w-4 text-infra-teal" />
-                <h3 className="font-medium">Project Database</h3>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Access detailed information on hundreds of infrastructure projects, 
-                with comprehensive filtering and sorting capabilities.
-              </p>
-            </div>
-            
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-infra-teal" />
-                <h3 className="font-medium">Interactive Maps</h3>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Visualize projects geographically with our interactive mapping tools, 
-                allowing spatial analysis of infrastructure development.
-              </p>
-            </div>
-            
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <BarChart3 className="h-4 w-4 text-infra-teal" />
-                <h3 className="font-medium">Analytics</h3>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Dive deep into infrastructure trends with advanced analytics 
-                and customizable reports focused on key metrics.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      
-      <Card>
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <Globe className="h-5 w-5 text-infra-teal" />
-            <CardTitle>For Civil Engineers</CardTitle>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4">
-            Infrastructure Insight offers specialized resources for civil engineering professionals:
-          </p>
-          
-          <div className="space-y-4">
-            <div className="rounded-md border p-4">
-              <h3 className="font-medium mb-2">Technical Specifications</h3>
-              <p className="text-sm text-muted-foreground">
-                Access detailed engineering specifications, design parameters, and construction 
-                methodologies for megaprojects worldwide. Our database includes information on 
-                structural systems, materials, environmental considerations, and innovative technologies.
-              </p>
-            </div>
-            
-            <div className="rounded-md border p-4">
-              <h3 className="font-medium mb-2">Best Practices &amp; Case Studies</h3>
-              <p className="text-sm text-muted-foreground">
-                Learn from successful and challenging projects through comprehensive case studies. 
-                We document engineering solutions to complex problems, highlighting innovations 
-                and lessons learned that can be applied to future infrastructure development.
-              </p>
-            </div>
-            
-            <div className="rounded-md border p-4">
-              <h3 className="font-medium mb-2">Project Challenges &amp; Solutions</h3>
-              <p className="text-sm text-muted-foreground">
-                Explore how engineering teams have overcome specific technical, environmental, 
-                and logistical challenges. Our detailed project pages document problem-solving 
-                approaches and innovative solutions implemented by engineers worldwide.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 };

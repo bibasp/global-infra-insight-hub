@@ -1,16 +1,8 @@
-
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { 
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from "@/components/ui/select";
-import { ProjectStatus, ProjectType } from "@/types";
-import { X } from "lucide-react";
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ProjectStatus, ProjectType } from "@/types";
 
 interface ProjectFiltersProps {
   onFilterChange: (filters: {
@@ -21,89 +13,71 @@ interface ProjectFiltersProps {
 }
 
 export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
-  const [filters, setFilters] = useState({
-    search: "",
-    status: "" as ProjectStatus | "",
-    type: "" as ProjectType | ""
-  });
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState<ProjectStatus | "">("");
+  const [type, setType] = useState<ProjectType | "">("");
 
-  const resetFilters = () => {
-    const resetFilters = {
-      search: "",
-      status: "" as ProjectStatus | "",
-      type: "" as ProjectType | ""
-    };
-    setFilters(resetFilters);
-    onFilterChange(resetFilters);
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    onFilterChange({ search: e.target.value, status, type });
   };
 
-  const handleFilterChange = (newFilters: typeof filters) => {
-    setFilters(newFilters);
-    onFilterChange(newFilters);
+  const handleStatusChange = (value: ProjectStatus | "") => {
+    setStatus(value);
+    onFilterChange({ search, status: value, type });
+  };
+
+  const handleTypeChange = (value: ProjectType | "") => {
+    setType(value);
+    onFilterChange({ search, status, type: value });
   };
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row items-start sm:items-center mb-6">
-      <div className="w-full sm:w-1/3">
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
+      <div>
+        <Label htmlFor="search">Search</Label>
         <Input
+          type="search"
+          id="search"
           placeholder="Search projects..."
-          value={filters.search}
-          onChange={(e) => {
-            const newFilters = { ...filters, search: e.target.value };
-            handleFilterChange(newFilters);
-          }}
+          value={search}
+          onChange={handleSearchChange}
         />
       </div>
-      <div className="w-full sm:w-1/3">
-        <Select
-          value={filters.status || "all"}
-          onValueChange={(value) => {
-            // Convert "all" to empty string for filter logic
-            const newValue = value === "all" ? "" : value as ProjectStatus;
-            const newFilters = { ...filters, status: newValue };
-            handleFilterChange(newFilters);
-          }}
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Filter by status" />
+      <div>
+        <Label htmlFor="status">Status</Label>
+        <Select onValueChange={handleStatusChange}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="All Statuses" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Statuses</SelectItem>
-            {Object.values(ProjectStatus).map((status) => (
-              <SelectItem key={status} value={status}>
-                {status}
-              </SelectItem>
-            ))}
+            <SelectItem value="">All Statuses</SelectItem>
+            <SelectItem value={ProjectStatus.PLANNED}>{ProjectStatus.PLANNED}</SelectItem>
+            <SelectItem value={ProjectStatus.ONGOING}>{ProjectStatus.ONGOING}</SelectItem>
+            <SelectItem value={ProjectStatus.COMPLETED}>{ProjectStatus.COMPLETED}</SelectItem>
+            <SelectItem value={ProjectStatus.PARTIALLY_OPERATIONAL}>{ProjectStatus.PARTIALLY_OPERATIONAL}</SelectItem>
           </SelectContent>
         </Select>
       </div>
-      <div className="w-full sm:w-1/3">
-        <Select
-          value={filters.type || "all"}
-          onValueChange={(value) => {
-            // Convert "all" to empty string for filter logic
-            const newValue = value === "all" ? "" : value as ProjectType;
-            const newFilters = { ...filters, type: newValue };
-            handleFilterChange(newFilters);
-          }}
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Filter by type" />
+      <div>
+        <Label htmlFor="type">Type</Label>
+        <Select onValueChange={handleTypeChange}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="All Types" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Types</SelectItem>
-            {Object.values(ProjectType).map((type) => (
-              <SelectItem key={type} value={type}>
-                {type}
-              </SelectItem>
-            ))}
+            <SelectItem value="">All Types</SelectItem>
+            <SelectItem value={ProjectType.ROAD}>{ProjectType.ROAD}</SelectItem>
+            <SelectItem value={ProjectType.BRIDGE}>{ProjectType.BRIDGE}</SelectItem>
+            <SelectItem value={ProjectType.RAIL}>{ProjectType.RAIL}</SelectItem>
+            <SelectItem value={ProjectType.AIRPORT}>{ProjectType.AIRPORT}</SelectItem>
+            <SelectItem value={ProjectType.PORT}>{ProjectType.PORT}</SelectItem>
+            <SelectItem value={ProjectType.ENERGY}>{ProjectType.ENERGY}</SelectItem>
+            <SelectItem value={ProjectType.WATER}>{ProjectType.WATER}</SelectItem>
+            <SelectItem value={ProjectType.TELECOM}>{ProjectType.TELECOM}</SelectItem>
           </SelectContent>
         </Select>
       </div>
-      <Button variant="outline" size="icon" onClick={resetFilters} className="ml-auto">
-        <X className="h-4 w-4" />
-        <span className="sr-only">Reset filters</span>
-      </Button>
     </div>
   );
 }
