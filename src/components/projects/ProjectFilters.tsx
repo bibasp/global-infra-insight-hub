@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,27 +8,27 @@ import { ProjectStatus, ProjectType } from "@/types";
 interface ProjectFiltersProps {
   onFilterChange: (filters: {
     search: string;
-    status: ProjectStatus | "";
-    type: ProjectType | "";
+    status: ProjectStatus | "all";
+    type: ProjectType | "all";
   }) => void;
 }
 
 export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
   const [search, setSearch] = useState("");
-  const [status, setStatus] = useState<ProjectStatus | "">("");
-  const [type, setType] = useState<ProjectType | "">("");
+  const [status, setStatus] = useState<ProjectStatus | "all">("all");
+  const [type, setType] = useState<ProjectType | "all">("all");
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     onFilterChange({ search: e.target.value, status, type });
   };
 
-  const handleStatusChange = (value: ProjectStatus | "") => {
+  const handleStatusChange = (value: ProjectStatus | "all") => {
     setStatus(value);
     onFilterChange({ search, status: value, type });
   };
 
-  const handleTypeChange = (value: ProjectType | "") => {
+  const handleTypeChange = (value: ProjectType | "all") => {
     setType(value);
     onFilterChange({ search, status, type: value });
   };
@@ -51,11 +52,11 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
             <SelectValue placeholder="All Statuses" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Statuses</SelectItem>
+            <SelectItem value="all">All Statuses</SelectItem>
             <SelectItem value={ProjectStatus.PLANNED}>{ProjectStatus.PLANNED}</SelectItem>
             <SelectItem value={ProjectStatus.ONGOING}>{ProjectStatus.ONGOING}</SelectItem>
             <SelectItem value={ProjectStatus.COMPLETED}>{ProjectStatus.COMPLETED}</SelectItem>
-            <SelectItem value={ProjectStatus.PARTIALLY_OPERATIONAL}>{ProjectStatus.PARTIALLY_OPERATIONAL}</SelectItem>
+            <SelectItem value={ProjectStatus.HALTED}>{ProjectStatus.HALTED}</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -66,15 +67,13 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
             <SelectValue placeholder="All Types" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Types</SelectItem>
-            <SelectItem value={ProjectType.ROAD}>{ProjectType.ROAD}</SelectItem>
-            <SelectItem value={ProjectType.BRIDGE}>{ProjectType.BRIDGE}</SelectItem>
-            <SelectItem value={ProjectType.RAIL}>{ProjectType.RAIL}</SelectItem>
-            <SelectItem value={ProjectType.AIRPORT}>{ProjectType.AIRPORT}</SelectItem>
-            <SelectItem value={ProjectType.PORT}>{ProjectType.PORT}</SelectItem>
+            <SelectItem value="all">All Types</SelectItem>
+            <SelectItem value={ProjectType.TRANSPORT}>{ProjectType.TRANSPORT}</SelectItem>
             <SelectItem value={ProjectType.ENERGY}>{ProjectType.ENERGY}</SelectItem>
             <SelectItem value={ProjectType.WATER}>{ProjectType.WATER}</SelectItem>
-            <SelectItem value={ProjectType.TELECOM}>{ProjectType.TELECOM}</SelectItem>
+            <SelectItem value={ProjectType.BUILDINGS}>{ProjectType.BUILDINGS}</SelectItem>
+            <SelectItem value={ProjectType.INDUSTRIAL}>{ProjectType.INDUSTRIAL}</SelectItem>
+            <SelectItem value={ProjectType.OTHER}>{ProjectType.OTHER}</SelectItem>
           </SelectContent>
         </Select>
       </div>

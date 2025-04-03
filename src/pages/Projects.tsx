@@ -11,8 +11,8 @@ const Projects = () => {
 
   const handleFilterChange = (filters: {
     search: string;
-    status: ProjectStatus | "";
-    type: ProjectType | "";
+    status: ProjectStatus | "all";
+    type: ProjectType | "all";
   }) => {
     const filtered = mockProjects.filter((project) => {
       // Search filter
@@ -23,10 +23,10 @@ const Projects = () => {
         project.location.country.toLowerCase().includes(filters.search.toLowerCase());
 
       // Status filter
-      const statusMatch = filters.status === "" || project.status === filters.status;
+      const statusMatch = filters.status === "all" || project.status === filters.status;
 
       // Type filter
-      const typeMatch = filters.type === "" || project.type === filters.type;
+      const typeMatch = filters.type === "all" || project.type === filters.type;
 
       return searchMatch && statusMatch && typeMatch;
     });
