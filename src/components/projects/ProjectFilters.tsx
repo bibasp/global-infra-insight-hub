@@ -34,19 +34,20 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
   };
 
   return (
-    <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
-      <div>
-        <Label htmlFor="search">Search</Label>
+    <div className="grid gap-5 grid-cols-1 md:grid-cols-3">
+      <div className="space-y-2">
+        <Label htmlFor="search" className="font-medium">Search</Label>
         <Input
           type="search"
           id="search"
           placeholder="Search projects..."
           value={search}
           onChange={handleSearchChange}
+          className="border-gray-300 focus:border-bibas-blue"
         />
       </div>
-      <div>
-        <Label htmlFor="status">Status</Label>
+      <div className="space-y-2">
+        <Label htmlFor="status" className="font-medium">Status</Label>
         <Select onValueChange={handleStatusChange}>
           <SelectTrigger className="w-full">
             <SelectValue placeholder="All Statuses" />
@@ -60,8 +61,8 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
           </SelectContent>
         </Select>
       </div>
-      <div>
-        <Label htmlFor="type">Type</Label>
+      <div className="space-y-2">
+        <Label htmlFor="type" className="font-medium">Type</Label>
         <Select onValueChange={handleTypeChange}>
           <SelectTrigger className="w-full">
             <SelectValue placeholder="All Types" />
