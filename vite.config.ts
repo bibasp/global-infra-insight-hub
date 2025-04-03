@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => ({
       }
     }
   },
+  publicDir: 'public',
   plugins: [
     react(),
     mode === 'development' &&
