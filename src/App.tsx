@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -20,7 +19,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <ThemeProvider attribute="class" defaultTheme="light">
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter basename="/global-infra-insight-hub">
         <TooltipProvider>
           <Routes>
             <Route element={<Layout />}>
