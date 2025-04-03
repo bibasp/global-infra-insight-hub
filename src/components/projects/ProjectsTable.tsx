@@ -5,6 +5,8 @@ import { Project } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import { formatDistanceToNow } from "date-fns";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 interface ProjectsTableProps {
   projects: Project[];
@@ -30,7 +32,7 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
   };
 
   return (
-    <div className="rounded-md border">
+    <div className="rounded-md border overflow-hidden">
       <Table>
         <TableHeader>
           <TableRow>
@@ -43,18 +45,35 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {projects.map((project) => (
-            <TableRow key={project.id} className="hover:bg-muted/50">
+          {projects.map((project, index) => (
+            <motion.tr
+              key={project.id}
+              className="hover:bg-muted/50 group cursor-pointer"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05, duration: 0.3 }}
+              whileHover={{ backgroundColor: "rgba(0, 0, 0, 0.04)" }}
+            >
               <TableCell className="font-medium">
-                <Link 
-                  to={`/project/${project.id}`} 
-                  className="hover:underline text-foreground hover:text-blue-600"
-                >
-                  {project.name}
-                </Link>
+                <HoverCard>
+                  <HoverCardTrigger asChild>
+                    <Link 
+                      to={`/project/${project.id}`} 
+                      className="hover:underline text-foreground hover:text-blue-600 transition-colors"
+                    >
+                      {project.name}
+                    </Link>
+                  </HoverCardTrigger>
+                  <HoverCardContent className="w-80">
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-semibold">{project.name}</h4>
+                      <p className="text-xs text-muted-foreground">{project.description}</p>
+                    </div>
+                  </HoverCardContent>
+                </HoverCard>
               </TableCell>
               <TableCell>
-                <Badge variant="outline" className="bg-background">
+                <Badge variant="outline" className="bg-background group-hover:bg-blue-50 transition-colors">
                   {project.type}
                 </Badge>
               </TableCell>
@@ -69,7 +88,7 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
               <TableCell className="text-muted-foreground">
                 {formatDistanceToNow(new Date(project.lastUpdated), { addSuffix: true })}
               </TableCell>
-            </TableRow>
+            </motion.tr>
           ))}
         </TableBody>
       </Table>
