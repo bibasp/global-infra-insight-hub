@@ -5,22 +5,17 @@
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script>
-    // Single page apps for GitHub Pages
-    // MIT License
-    // https://github.com/rafgraph/spa-github-pages
-    const pathSegmentsToKeep = 1; // Keep the repo name, e.g., /global-infra-insight-hub
+    // Single page apps for GitHub Pages or custom domains
+    // Modified from: https://github.com/rafgraph/spa-github-pages
+    const pathSegmentsToKeep = 1; // For /global-infrastructure/
     
     let l = window.location;
-    const repoName = '/global-infra-insight-hub';
+    // Get the current path after the /global-infrastructure/ part
+    const path = l.pathname.split('/').slice(pathSegmentsToKeep + 1).join('/');
     
-    // Redirect to the index.html with the path as a query parameter
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      l.hash
-    );
+    // Redirect to the index.html with the path info
+    sessionStorage.redirect = l.pathname + l.search;
+    l.replace(`/global-infrastructure/index.html`);
   </script>
 </head>
 <body>

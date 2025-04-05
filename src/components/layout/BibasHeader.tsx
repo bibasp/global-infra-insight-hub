@@ -19,14 +19,24 @@ const BibasHeader = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  const navigation = [
-    { name: "Home", path: "/" },
-    { name: "Blog", path: "/blog" },
-    { name: "Computer Vision", path: "/computer-vision" },
-    { name: "Research Summaries", path: "/research" },
-    { name: "What's New", path: "/whats-new" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
+  // External links to other parts of your website
+  const externalNavigation = [
+    { name: "Home", path: "https://www.bibaspokhrel.com.np/index.html" },
+    { name: "Blog", path: "https://www.bibaspokhrel.com.np/blog.html" },
+    { name: "Computer Vision", path: "https://www.bibaspokhrel.com.np/computer_vision/computer_vision.html" },
+    { name: "Research Summaries", path: "https://www.bibaspokhrel.com.np/research.html" },
+    { name: "What's New", path: "https://www.bibaspokhrel.com.np/news.html" },
+    { name: "Contact", path: "https://www.bibaspokhrel.com.np/contact.html" },
+  ];
+
+  // Internal navigation for this app
+  const internalNavigation = [
+    { name: "Dashboard", path: "/" },
+    { name: "Global Projects", path: "/projects" },
+    { name: "Map View", path: "/map" },
+    { name: "News Feed", path: "/news" },
+    { name: "Analytics", path: "/analytics" },
+    { name: "About", path: "/about" },
   ];
 
   return (
@@ -44,18 +54,44 @@ const BibasHeader = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1, duration: 0.3 }}
           >
-            <Link to="/" className="text-xl font-semibold text-foreground">
+            <a href="https://www.bibaspokhrel.com.np/index.html" className="text-xl font-semibold text-foreground">
               Bibas Pokhrel
-            </Link>
+            </a>
           </motion.div>
           
           <nav className="hidden md:flex items-center">
-            {navigation.map((item, i) => (
+            {/* External website links */}
+            {externalNavigation.map((item, i) => (
               <motion.div
-                key={item.name}
+                key={`ext-${item.name}`}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
+              >
+                <a
+                  href={item.path}
+                  className="px-3 py-2 text-sm font-medium transition-colors relative text-foreground/80 hover:text-foreground"
+                >
+                  {item.name}
+                </a>
+              </motion.div>
+            ))}
+            
+            {/* Divider */}
+            <motion.div 
+              className="mx-2 h-5 border-r border-gray-300 dark:border-gray-700"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              transition={{ delay: 0.4, duration: 0.3 }}
+            />
+            
+            {/* Internal app links */}
+            {internalNavigation.map((item, i) => (
+              <motion.div
+                key={`int-${item.name}`}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + i * 0.05, duration: 0.3 }}
               >
                 <Link
                   to={item.path}
