@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Newspaper } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 interface RecentNewsCardProps {
   news: NewsItem[];
@@ -34,7 +35,14 @@ export function RecentNewsCard({ news }: RecentNewsCardProps) {
         <ScrollArea className="h-[290px] px-6">
           <div className="space-y-4 py-4">
             {news.map((item) => (
-              <div key={item.id} className="flex flex-col space-y-2 border-b pb-4 last:border-0">
+              <motion.div 
+                key={item.id} 
+                className="flex flex-col space-y-2 border-b pb-4 last:border-0"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                whileHover={{ scale: 1.01 }}
+              >
                 <div className="flex items-start justify-between">
                   <h3 className="font-medium leading-tight">{item.title}</h3>
                   <Badge variant="outline" className={cn("text-xs ml-2", getSentimentColor(item.sentiment))}>
@@ -47,7 +55,7 @@ export function RecentNewsCard({ news }: RecentNewsCardProps) {
                   <span className="mx-2">•</span>
                   <span>{new Date(item.date).toLocaleDateString()}</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </ScrollArea>

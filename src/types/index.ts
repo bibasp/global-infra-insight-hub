@@ -39,6 +39,7 @@ export interface Project {
   stakeholders: string[];
   tags: string[];
   lastUpdated: string;
+  uniqueFacts?: string[]; // Added to store interesting/unique facts about each project
 }
 
 export interface NewsItem {
