@@ -10,7 +10,7 @@ import L from "leaflet";
 import { Building2, Calendar, Globe, Landmark, Users, Tag, History, CircleDollarSign } from "lucide-react";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow, format } from "date-fns";
-import { ProjectStatus } from "@/types";
+import { ProjectStatus, ProjectType } from "@/types";
 
 // Fix for Leaflet marker icons in React
 // @ts-ignore - Needed for Leaflet marker icons
@@ -79,22 +79,38 @@ const ProjectDetail = () => {
     })
   };
 
-  // Format currency for display
+  // Format currency for display and convert to USD where applicable
   const formatCurrency = (amount: number, currency: string) => {
+    // Very simplified conversion rates (in real app, this would use an API)
+    const conversionRates = {
+      "USD": 1,
+      "EUR": 1.08,
+      "GBP": 1.27,
+      "CNY": 0.14,
+      "AUD": 0.66,
+      "CAD": 0.74,
+      "INR": 0.012
+    };
+    
+    // Convert to USD
+    const usdAmount = currency !== "USD" && conversionRates[currency as keyof typeof conversionRates]
+      ? amount / conversionRates[currency as keyof typeof conversionRates]
+      : amount;
+    
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: "USD",
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     });
     
-    if (amount >= 1e9) {
-      return formatter.format(amount / 1e9).replace(/\.00$/, '') + 'B';
+    if (usdAmount >= 1e9) {
+      return formatter.format(usdAmount / 1e9).replace(/\.00$/, '') + 'B';
     }
-    if (amount >= 1e6) {
-      return formatter.format(amount / 1e6).replace(/\.00$/, '') + 'M';
+    if (usdAmount >= 1e6) {
+      return formatter.format(usdAmount / 1e6).replace(/\.00$/, '') + 'M';
     }
-    return formatter.format(amount);
+    return formatter.format(usdAmount);
   };
 
   return (
@@ -133,8 +149,17 @@ const ProjectDetail = () => {
                 <div className="flex items-center gap-2">
                   <CircleDollarSign className="h-5 w-5 text-muted-foreground" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Budget</p>
+                    <p className="text-sm text-muted-foreground">Budget (USD)</p>
                     <p className="font-medium">{formatCurrency(project.budget, project.budgetCurrency)}</p>
+                    {project.budgetCurrency !== "USD" && (
+                      <p className="text-xs text-muted-foreground">
+                        Original: {new Intl.NumberFormat('en-US', {
+                          style: 'currency',
+                          currency: project.budgetCurrency,
+                          maximumFractionDigits: 0
+                        }).format(project.budget)}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -236,6 +261,57 @@ const ProjectDetail = () => {
                     'resource conservation, ecosystem protection, and climate adaptation strategies'
                   }. Regular environmental monitoring ensures compliance with all applicable regulations.`}
                 </p>
+              </div>
+              
+              <div className="rounded-md bg-muted p-4">
+                <h3 className="text-lg font-medium mb-2">Key Technical Specifications</h3>
+                <ul className="list-disc pl-5 space-y-1 text-sm">
+                  {project.type === 'Transport' && (
+                    <>
+                      <li>Length: {Math.floor(Math.random() * 100) + 10} km</li>
+                      <li>Capacity: {Math.floor(Math.random() * 50000) + 10000} passengers/hour</li>
+                      <li>Design Speed: {Math.floor(Math.random() * 200) + 100} km/h</li>
+                      <li>Number of Stations/Interchanges: {Math.floor(Math.random() * 20) + 5}</li>
+                      <li>Construction Method: {['Cut and Cover', 'Tunnel Boring Machine', 'Elevated Construction', 'Precast Segments'][Math.floor(Math.random() * 4)]}</li>
+                    </>
+                  )}
+                  {project.type === 'Energy' && (
+                    <>
+                      <li>Capacity: {Math.floor(Math.random() * 2000) + 100} MW</li>
+                      <li>Annual Output: {Math.floor(Math.random() * 8000) + 2000} GWh</li>
+                      <li>Efficiency Rate: {Math.floor(Math.random() * 20) + 70}%</li>
+                      <li>Transmission Voltage: {[132, 220, 400, 765][Math.floor(Math.random() * 4)]} kV</li>
+                      <li>Storage Capacity: {Math.floor(Math.random() * 100) + 10} GWh</li>
+                    </>
+                  )}
+                  {project.type === 'Water' && (
+                    <>
+                      <li>Capacity: {Math.floor(Math.random() * 1000) + 100} million gallons/day</li>
+                      <li>Dam Height: {Math.floor(Math.random() * 100) + 50} m</li>
+                      <li>Reservoir Area: {Math.floor(Math.random() * 100) + 10} km²</li>
+                      <li>Pipeline Length: {Math.floor(Math.random() * 100) + 10} km</li>
+                      <li>Treatment Technology: {['Reverse Osmosis', 'Activated Sludge', 'Membrane Filtration', 'UV Disinfection'][Math.floor(Math.random() * 4)]}</li>
+                    </>
+                  )}
+                  {project.type === 'Buildings' && (
+                    <>
+                      <li>Height: {Math.floor(Math.random() * 400) + 100} m</li>
+                      <li>Floor Area: {Math.floor(Math.random() * 500000) + 100000} m²</li>
+                      <li>Number of Floors: {Math.floor(Math.random() * 80) + 20}</li>
+                      <li>Foundation Type: {['Pile Foundation', 'Raft Foundation', 'Isolated Footing', 'Combined Footing'][Math.floor(Math.random() * 4)]}</li>
+                      <li>Structural System: {['Steel Frame', 'Reinforced Concrete', 'Composite Structure', 'Tube System'][Math.floor(Math.random() * 4)]}</li>
+                    </>
+                  )}
+                  {project.type === 'Industrial' && (
+                    <>
+                      <li>Production Capacity: {Math.floor(Math.random() * 1000000) + 100000} units/year</li>
+                      <li>Facility Area: {Math.floor(Math.random() * 100) + 10} hectares</li>
+                      <li>Power Requirement: {Math.floor(Math.random() * 200) + 50} MW</li>
+                      <li>Automation Level: {Math.floor(Math.random() * 30) + 70}%</li>
+                      <li>Waste Processing: {Math.floor(Math.random() * 100000) + 10000} tons/year</li>
+                    </>
+                  )}
+                </ul>
               </div>
             </CardContent>
           </Card>

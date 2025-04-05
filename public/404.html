@@ -1,19 +1,26 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script>
-    const path = window.location.pathname;
-    const repo = '/global-infra-insight-hub';
+    // Single page apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    const pathSegmentsToKeep = 1; // Keep the repo name, e.g., /global-infra-insight-hub
     
-    if (path.indexOf(repo) === 0) {
-      sessionStorage.redirect = path.substring(repo.length);
-    } else {
-      sessionStorage.redirect = path;
-    }
+    let l = window.location;
+    const repoName = '/global-infra-insight-hub';
     
-    window.location.href = window.location.origin + repo + '/';
+    // Redirect to the index.html with the path as a query parameter
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
   </script>
 </head>
 <body>
