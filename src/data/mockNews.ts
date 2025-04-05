@@ -165,6 +165,82 @@ export const mockNews: NewsItem[] = [
     relatedProjects: ["p45"],
     tags: ["drought", "shipping", "climate change", "adaptation"],
     sentiment: "neutral"
+  },
+  {
+    id: "n16",
+    title: "Diamer-Bhasha Dam Construction Reaches 15% Completion",
+    source: "Dawn News",
+    date: "2024-02-10",
+    url: "#",
+    summary: "Pakistan's Diamer-Bhasha Dam project reports 15% completion with foundation work accelerating after resolution of initial geological challenges in the Karakoram Range.",
+    relatedProjects: ["p52"],
+    tags: ["construction", "dam", "progress", "water"],
+    sentiment: "positive"
+  },
+  {
+    id: "n17",
+    title: "Blue Nile Renaissance Dam Begins Full Operation Despite Regional Tensions",
+    source: "Al Jazeera",
+    date: "2023-11-05",
+    url: "#",
+    summary: "Ethiopia announces all 13 turbines of the Grand Ethiopian Renaissance Dam are now operational, despite ongoing diplomatic tensions with Egypt and Sudan over Nile water rights.",
+    relatedProjects: ["p49"],
+    tags: ["hydropower", "diplomatic tension", "water rights", "operation"],
+    sentiment: "neutral"
+  },
+  {
+    id: "n18",
+    title: "Laos-China Railway Reaches 5 Million Passenger Milestone",
+    source: "Vientiane Times",
+    date: "2023-12-18",
+    url: "#",
+    summary: "The Laos-China Railway has transported its 5 millionth passenger since operations began in December 2021, significantly boosting tourism and trade between the nations.",
+    relatedProjects: ["p44"],
+    tags: ["milestone", "rail", "passengers", "BRI"],
+    sentiment: "positive"
+  },
+  {
+    id: "n19",
+    title: "ITER Fusion Project Reports Critical Magnet System Test Success",
+    source: "Science Magazine",
+    date: "2024-01-10",
+    url: "#",
+    summary: "The ITER fusion project has successfully tested its central solenoid magnet system, validating a critical component for the world's largest fusion experiment.",
+    relatedProjects: ["p38"],
+    tags: ["fusion", "technology", "testing", "energy"],
+    sentiment: "positive"
+  },
+  {
+    id: "n20",
+    title: "Hong Kong-Zhuhai-Macau Bridge Traffic Lower Than Expected in Fourth Year",
+    source: "South China Morning Post",
+    date: "2023-10-30",
+    url: "#",
+    summary: "World's longest sea crossing continues to see traffic volumes at only 70% of projected levels four years after opening, raising questions about its economic viability.",
+    relatedProjects: ["p46"],
+    tags: ["bridge", "traffic", "economic", "utilization"],
+    sentiment: "negative"
+  },
+  {
+    id: "n21",
+    title: "Delhi-Mumbai Industrial Corridor Secures Additional $5B Funding from Japan",
+    source: "Economic Times",
+    date: "2024-03-05",
+    url: "#",
+    summary: "Japan International Cooperation Agency commits additional $5 billion to India's ambitious Delhi-Mumbai Industrial Corridor, accelerating development of three smart cities.",
+    relatedProjects: ["p42"],
+    tags: ["funding", "development", "international cooperation", "smart cities"],
+    sentiment: "positive"
+  },
+  {
+    id: "n22",
+    title: "Kusile Power Station Unit 5 Successfully Synchronized to South African Grid",
+    source: "Engineering News",
+    date: "2023-09-22",
+    url: "#",
+    summary: "Eskom announces the successful synchronization of Unit 5 at Kusile Power Station to the national grid, adding 800MW to South Africa's struggling power system.",
+    relatedProjects: ["p48"],
+    tags: ["power", "commissioning", "electricity", "energy"],
+    sentiment: "positive"
   }
-  // Add more news items to reach 100+ news items
-];
+]

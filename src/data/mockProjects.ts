@@ -783,4 +783,600 @@ export const mockProjects: Project[] = [
     timeline: {
       start: "2011-06-01",
       estimatedCompletion: "2019-11-27",
-      actualCompletion
+      actualCompletion: "2019-11-27"
+    },
+    stakeholders: ["Norte Energia", "Brazilian Government", "BNDES"],
+    tags: ["hydroelectric", "dam", "power generation", "amazon"],
+    lastUpdated: "2022-01-15",
+    uniqueFacts: [
+      "Can produce enough electricity to power 60 million people",
+      "Required diverting 80% of the Xingu River's flow",
+      "Utilizes a unique run-of-river design to reduce environmental impact",
+      "Contains 18 generating units spread across two powerhouses"
+    ]
+  },
+  {
+    id: "p33",
+    name: "Crossrail / Elizabeth Line",
+    description: "A 118 km railway line through London connecting suburbs in the east and west with central London.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 18700000000,
+    budgetCurrency: "GBP",
+    location: {
+      country: "United Kingdom",
+      city: "London",
+      coordinates: {
+        lat: 51.5085,
+        lng: -0.1257
+      }
+    },
+    timeline: {
+      start: "2009-05-15",
+      estimatedCompletion: "2018-12-01",
+      actualCompletion: "2022-05-24"
+    },
+    stakeholders: ["Transport for London", "Department for Transport", "Crossrail Ltd"],
+    tags: ["rail", "underground", "public transport", "transit"],
+    lastUpdated: "2023-01-30",
+    uniqueFacts: [
+      "Required excavating 42km of tunnels through London's complex underground environment",
+      "Features 10 new stations with platforms twice the length of normal London Underground stations",
+      "Uses custom-built 200m-long tunnel boring machines named after British women",
+      "Construction uncovered over 10,000 archaeological artifacts spanning 8,000 years"
+    ]
+  },
+  {
+    id: "p34",
+    name: "Beijing Daxing International Airport",
+    description: "A massive star-shaped airport with the world's largest single-building terminal, designed to handle 100 million passengers annually.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 11500000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "China",
+      city: "Beijing",
+      coordinates: {
+        lat: 39.5098,
+        lng: 116.4105
+      }
+    },
+    timeline: {
+      start: "2014-12-26",
+      estimatedCompletion: "2019-09-25",
+      actualCompletion: "2019-09-25"
+    },
+    stakeholders: ["Civil Aviation Administration of China", "Beijing Municipal Government", "China Southern Airlines"],
+    tags: ["airport", "aviation", "infrastructure", "transportation hub"],
+    lastUpdated: "2022-05-10",
+    uniqueFacts: [
+      "Terminal designed by Zaha Hadid spans 700,000 square meters in a single structure",
+      "Features five concourses radiating from a central hub with the shortest walk to any gate under 600m",
+      "Built with 52,000 tons of steel, including custom curved sections for the flowing roof",
+      "Integrates facial recognition for all passenger services from check-in to boarding"
+    ]
+  },
+  {
+    id: "p35",
+    name: "Istanbul Airport",
+    description: "The world's largest airport built from scratch, designed to handle 200 million passengers annually at full capacity.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 12000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Turkey",
+      city: "Istanbul",
+      coordinates: {
+        lat: 41.2608,
+        lng: 28.7416
+      }
+    },
+    timeline: {
+      start: "2015-05-01",
+      estimatedCompletion: "2018-10-29",
+      actualCompletion: "2018-10-29"
+    },
+    stakeholders: ["IGA Consortium", "Turkish Government", "General Directorate of State Airports Authority"],
+    tags: ["airport", "aviation", "mega-project", "transportation hub"],
+    lastUpdated: "2023-02-15",
+    uniqueFacts: [
+      "When fully completed will have six runways and capacity for 200 million passengers annually",
+      "Terminal roof design inspired by Istanbul's historic architecture and Bosphorus waves",
+      "Features the world's largest airport terminal under a single roof (1.4 million square meters)",
+      "Implemented the world's largest airport IT network with over 3,000 flight information screens"
+    ]
+  },
+  {
+    id: "p36",
+    name: "Burj Khalifa",
+    description: "The world's tallest building at 828 meters, an iconic mixed-use skyscraper that redefined urban architecture.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.BUILDINGS,
+    budget: 1500000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "United Arab Emirates",
+      city: "Dubai",
+      coordinates: {
+        lat: 25.1972,
+        lng: 55.2744
+      }
+    },
+    timeline: {
+      start: "2004-01-06",
+      estimatedCompletion: "2010-01-04",
+      actualCompletion: "2010-01-04"
+    },
+    stakeholders: ["Emaar Properties", "Samsung C&T", "Skidmore, Owings & Merrill"],
+    tags: ["skyscraper", "mixed-use", "architecture", "iconic"],
+    lastUpdated: "2022-03-15",
+    uniqueFacts: [
+      "Foundation required 192 piles extending 43 meters deep to support the structure",
+      "Uses a mechanical system that collects condensation from the exterior for irrigation",
+      "Contains enough concrete to build a sidewalk 2,065 kilometers long",
+      "The spire can be seen from 95 kilometers away in clear weather"
+    ]
+  },
+  {
+    id: "p37",
+    name: "ITER Fusion Reactor",
+    description: "The world's largest nuclear fusion research facility aimed at demonstrating the feasibility of fusion power.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.ENERGY,
+    budget: 22000000000,
+    budgetCurrency: "EUR",
+    location: {
+      country: "France",
+      city: "Saint-Paul-lès-Durance",
+      coordinates: {
+        lat: 43.7083,
+        lng: 5.7414
+      }
+    },
+    timeline: {
+      start: "2007-10-24",
+      estimatedCompletion: "2025-12-31"
+    },
+    stakeholders: ["ITER Organization", "European Union", "United States", "China", "Russia", "India", "Japan", "South Korea"],
+    tags: ["fusion", "energy", "research", "nuclear", "international"],
+    lastUpdated: "2023-12-01",
+    uniqueFacts: [
+      "Will create plasma temperatures of 150 million °C, ten times hotter than the sun's core",
+      "Uses the world's largest superconducting magnets to contain the plasma",
+      "Tokamak vacuum vessel weighs 5,200 tons, more than the Eiffel Tower's metalwork",
+      "The only multinational collaboration involving all major nuclear powers"
+    ]
+  },
+  {
+    id: "p38",
+    name: "Inga 3 Dam",
+    description: "A 11,000 MW hydroelectric dam on the Congo River, part of the Grand Inga scheme that could power half of Africa.",
+    status: ProjectStatus.PLANNED,
+    type: ProjectType.ENERGY,
+    budget: 14000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Democratic Republic of Congo",
+      city: "Inga",
+      coordinates: {
+        lat: -5.5243,
+        lng: 13.6201
+      }
+    },
+    timeline: {
+      start: "2024-01-01", 
+      estimatedCompletion: "2030-12-31"
+    },
+    stakeholders: ["DRC Government", "African Development Bank", "World Bank"],
+    tags: ["hydroelectric", "dam", "energy", "power", "africa"],
+    lastUpdated: "2023-11-30",
+    uniqueFacts: [
+      "Will harness the world's largest waterfall by volume (not height) with 42,000 cubic meters per second",
+      "Designed to be the first phase of Grand Inga, potentially the world's largest hydropower scheme",
+      "Could export electricity to Southern Africa Power Pool via 2,500km transmission lines",
+      "Will use run-of-river technology to minimize environmental impact compared to traditional dams"
+    ]
+  },
+  {
+    id: "p39",
+    name: "Mecca Grand Mosque Expansion",
+    description: "Massive expansion of Islam's holiest site to accommodate up to 1.85 million worshippers simultaneously.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.BUILDINGS,
+    budget: 10600000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Saudi Arabia",
+      city: "Mecca",
+      coordinates: {
+        lat: 21.4225,
+        lng: 39.8262
+      }
+    },
+    timeline: {
+      start: "2011-08-19",
+      estimatedCompletion: "2020-03-01",
+      actualCompletion: "2021-07-15"
+    },
+    stakeholders: ["Saudi Binladin Group", "Saudi Government", "General Presidency for the Affairs of the Two Holy Mosques"],
+    tags: ["religious", "cultural", "expansion", "architecture"],
+    lastUpdated: "2022-02-22",
+    uniqueFacts: [
+      "Features the world's largest folding umbrellas (each 20m high) that provide shade during day and open at night",
+      "Includes 680 escalators and 24 elevators specifically for people with disabilities",
+      "Uses special heat-resistant white marble flooring that stays cool despite desert temperatures",
+      "Air conditioning system can supply 8,000 liters of Zamzam water per second through drinking fountains"
+    ]
+  },
+  {
+    id: "p40",
+    name: "Jakarta-Bandung High-Speed Rail",
+    description: "Indonesia's first high-speed railway connecting Jakarta and Bandung with trains operating at 350 km/h.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 7900000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Indonesia",
+      city: "Jakarta",
+      coordinates: {
+        lat: -6.2088,
+        lng: 106.8456
+      }
+    },
+    timeline: {
+      start: "2016-01-21",
+      estimatedCompletion: "2021-12-31",
+      actualCompletion: "2023-10-17"
+    },
+    stakeholders: ["PT Kereta Cepat Indonesia-China", "Indonesian Government", "China Railway"],
+    tags: ["rail", "high-speed", "public transport", "BRI"],
+    lastUpdated: "2023-10-20",
+    uniqueFacts: [
+      "Used China's CRRC Qingdao Sifang trains operating at 350 km/h",
+      "Features 13 tunnels including a 1.8 km underwater tunnel beneath Jakarta Bay",
+      "Required developing six new earthquake-resistant technologies for Indonesian conditions",
+      "Reduced travel time from 3+ hours to 40 minutes between Indonesia's major economic centers"
+    ]
+  },
+  {
+    id: "p41",
+    name: "Delhi-Mumbai Industrial Corridor",
+    description: "A 1,500 km long industrial corridor with 8 smart cities, 9 industrial zones, and 3 ports connecting India's capital with its financial hub.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.INDUSTRIAL,
+    budget: 100000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "India",
+      city: "Delhi",
+      coordinates: {
+        lat: 28.7041,
+        lng: 77.1025
+      }
+    },
+    timeline: {
+      start: "2011-12-15",
+      estimatedCompletion: "2035-12-31"
+    },
+    stakeholders: ["Delhi Mumbai Industrial Corridor Development Corporation", "Japan International Cooperation Agency", "Indian Government"],
+    tags: ["industrial", "development", "smart cities", "economic corridor"],
+    lastUpdated: "2023-05-30",
+    uniqueFacts: [
+      "Planned to create 25 million jobs and triple industrial output in the influence zone",
+      "Will utilize a 4,000 MW dedicated power plant and a 2,700 km high-capacity gas pipeline",
+      "Includes India's first maglev train system connecting the smart cities",
+      "Plans to utilize 80% treated wastewater through advanced recycling systems"
+    ]
+  },
+  {
+    id: "p42",
+    name: "New Suez Canal",
+    description: "A major expansion of the Suez Canal creating a new 35 km parallel waterway to allow two-way traffic.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 8500000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Egypt",
+      city: "Suez",
+      coordinates: {
+        lat: 30.0742,
+        lng: 32.5498
+      }
+    },
+    timeline: {
+      start: "2014-08-05",
+      estimatedCompletion: "2015-08-06",
+      actualCompletion: "2015-08-06"
+    },
+    stakeholders: ["Suez Canal Authority", "Egyptian Armed Forces", "Egyptian Government"],
+    tags: ["canal", "maritime", "shipping", "waterway"],
+    lastUpdated: "2023-01-15",
+    uniqueFacts: [
+      "Completed in just one year instead of the projected three years",
+      "Used 45 dredging machines simultaneously to move 258 million cubic meters of sand",
+      "Reduced waiting times from 18 to 3 hours and transit times from 18 to 11 hours",
+      "Increased capacity from 49 to 97 ships per day, nearly doubling the canal's revenue"
+    ]
+  },
+  {
+    id: "p43",
+    name: "Laos-China Railway",
+    description: "A 1,035 km high-speed railway connecting Kunming, China to Vientiane, Laos as part of the Belt and Road Initiative.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 5986000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Laos",
+      city: "Vientiane",
+      coordinates: {
+        lat: 17.9757,
+        lng: 102.6331
+      }
+    },
+    timeline: {
+      start: "2016-12-25",
+      estimatedCompletion: "2021-12-03",
+      actualCompletion: "2021-12-03"
+    },
+    stakeholders: ["China Railway Group", "Laos-China Railway Company", "Lao Government"],
+    tags: ["rail", "high-speed", "BRI", "international"],
+    lastUpdated: "2023-06-10",
+    uniqueFacts: [
+      "Features 167 bridges and 75 tunnels covering over 60% of the entire route",
+      "Includes the 9.5 km Ban Sen tunnel, crossing through challenging karst formations",
+      "Reduced travel time from 3 days to 3 hours between the two countries",
+      "Built to Chinese Class 1 standards allowing speeds of up to 160 km/h"
+    ]
+  },
+  {
+    id: "p44",
+    name: "Panama Canal Expansion",
+    description: "A project that doubled the canal's capacity by adding a new set of locks to accommodate larger Post-Panamax ships.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 5250000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Panama",
+      city: "Panama City",
+      coordinates: {
+        lat: 9.0801,
+        lng: -79.6845
+      }
+    },
+    timeline: {
+      start: "2007-09-03",
+      estimatedCompletion: "2014-08-15",
+      actualCompletion: "2016-06-26"
+    },
+    stakeholders: ["Panama Canal Authority", "Grupo Unidos por el Canal", "Panamanian Government"],
+    tags: ["canal", "maritime", "shipping", "waterway"],
+    lastUpdated: "2022-07-10",
+    uniqueFacts: [
+      "New locks use rolling gates instead of miter gates, reducing maintenance requirements",
+      "Implemented innovative water-saving basins that reuse 60% of water in each lock cycle",
+      "Required excavating 150 million cubic meters of material, enough to build 25 Empire State Buildings",
+      "Designed to handle 98% of the world's shipping fleet vs 45% before expansion"
+    ]
+  },
+  {
+    id: "p45",
+    name: "Hong Kong-Zhuhai-Macau Bridge",
+    description: "The world's longest sea crossing at 55 km, connecting Hong Kong, Zhuhai, and Macau across the Pearl River Delta.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 20000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "China",
+      city: "Hong Kong",
+      coordinates: {
+        lat: 22.2944,
+        lng: 113.9428
+      }
+    },
+    timeline: {
+      start: "2009-12-15",
+      estimatedCompletion: "2016-12-31",
+      actualCompletion: "2018-10-24"
+    },
+    stakeholders: ["Hong Kong-Zhuhai-Macao Bridge Authority", "Chinese Government", "Hong Kong Government", "Macau Government"],
+    tags: ["bridge", "sea crossing", "infrastructure", "transportation"],
+    lastUpdated: "2022-11-05",
+    uniqueFacts: [
+      "Includes a 6.7 km underwater tunnel accessed by two artificial islands",
+      "Built to withstand typhoons with winds up to 340 km/h and magnitude 8 earthquakes",
+      "Used 400,000 tons of steel, enough to build 60 Eiffel Towers",
+      "Features boundary crossing facilities spanning 150 hectares on artificial islands"
+    ]
+  },
+  {
+    id: "p46",
+    name: "Marmaray Tunnel",
+    description: "The world's first undersea tunnel connecting two continents, running beneath the Bosphorus Strait in Istanbul.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 4500000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Turkey",
+      city: "Istanbul",
+      coordinates: {
+        lat: 41.0082,
+        lng: 29.0111
+      }
+    },
+    timeline: {
+      start: "2004-05-09",
+      estimatedCompletion: "2013-10-29",
+      actualCompletion: "2019-03-12"
+    },
+    stakeholders: ["Turkish Ministry of Transport", "Japan International Cooperation Agency", "Turkish State Railways"],
+    tags: ["tunnel", "rail", "undersea", "public transport"],
+    lastUpdated: "2022-03-10",
+    uniqueFacts: [
+      "Built 60 meters below sea level in a highly active seismic zone",
+      "Uses special earthquake-resistant immersed tube sections that can move with seismic waves",
+      "Discovered remains of a 4th-century Byzantine harbor during excavation, delaying construction",
+      "Connects the historic Silk Road by rail for the first time in history"
+    ]
+  },
+  {
+    id: "p47",
+    name: "Kusile Power Station",
+    description: "A 4,800 MW coal-fired power plant using clean coal technologies including flue gas desulfurization.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.ENERGY,
+    budget: 15500000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "South Africa",
+      city: "Witbank",
+      coordinates: {
+        lat: -25.9295,
+        lng: 29.0749
+      }
+    },
+    timeline: {
+      start: "2008-04-01",
+      estimatedCompletion: "2024-12-31"
+    },
+    stakeholders: ["Eskom", "South African Government", "Hitachi Power Africa"],
+    tags: ["power plant", "coal", "electricity", "energy"],
+    lastUpdated: "2023-08-15",
+    uniqueFacts: [
+      "First power plant in Africa to implement flue gas desulfurization technology",
+      "Cooling towers are 220m tall, among the tallest structures in South Africa",
+      "Will use air-cooled condensers instead of water cooling to conserve water resources",
+      "Coal conveyors total 18km in length, transporting 8,000 tons of coal per hour"
+    ]
+  },
+  {
+    id: "p48",
+    name: "Blue Nile Renaissance Dam",
+    description: "Africa's largest hydroelectric dam with 6,450 MW capacity on the Blue Nile River.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.ENERGY,
+    budget: 4800000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Ethiopia",
+      city: "Benishangul-Gumuz",
+      coordinates: {
+        lat: 11.2153,
+        lng: 35.0937
+      }
+    },
+    timeline: {
+      start: "2011-04-02",
+      estimatedCompletion: "2022-07-22",
+      actualCompletion: "2023-02-20"
+    },
+    stakeholders: ["Ethiopian Electric Power Corporation", "Ethiopian Government", "Salini Impregilo"],
+    tags: ["dam", "hydroelectric", "water management", "energy"],
+    lastUpdated: "2023-03-10",
+    uniqueFacts: [
+      "Reservoir capacity of 74 billion cubic meters, equivalent to 1.5 years of Blue Nile flow",
+      "Primarily financed through government bonds purchased by Ethiopian citizens",
+      "Dam wall contains 10.5 million cubic meters of concrete, three times that of Three Gorges Dam",
+      "Constructed on a foundation of volcanic rock to ensure stability"
+    ]
+  },
+  {
+    id: "p49",
+    name: "Bogibeel Bridge",
+    description: "India's longest rail-cum-road bridge at 4.94 km across the Brahmaputra River.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.TRANSPORT,
+    budget: 800000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "India",
+      city: "Dibrugarh",
+      coordinates: {
+        lat: 27.4728,
+        lng: 94.2951
+      }
+    },
+    timeline: {
+      start: "2002-04-21",
+      estimatedCompletion: "2009-04-21",
+      actualCompletion: "2018-12-25"
+    },
+    stakeholders: ["Indian Railways", "Indian Government", "Hindustan Construction Company"],
+    tags: ["bridge", "rail", "road", "infrastructure"],
+    lastUpdated: "2022-05-15",
+    uniqueFacts: [
+      "First fully welded bridge in India using European welding standards for greater earthquake resistance",
+      "Reduced travel distance between Assam and Arunachal Pradesh from 500km to 100km",
+      "Built using special composite welded steel truss to withstand extreme temperatures (-5°C to 45°C)",
+      "Has strategic military importance, allowing rapid movement of troops to the Chinese border"
+    ]
+  },
+  {
+    id: "p50",
+    name: "Karahnjukar Hydropower Project",
+    description: "Iceland's largest hydroelectric project with 690 MW capacity, powering aluminum smelting operations.",
+    status: ProjectStatus.COMPLETED,
+    type: ProjectType.ENERGY,
+    budget: 1500000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Iceland",
+      city: "Eastern Region",
+      coordinates: {
+        lat: 64.9312,
+        lng: -15.8267
+      }
+    },
+    timeline: {
+      start: "2003-01-15",
+      estimatedCompletion: "2007-11-30",
+      actualCompletion: "2008-03-01"
+    },
+    stakeholders: ["Landsvirkjun", "Icelandic Government", "Alcoa"],
+    tags: ["hydroelectric", "dam", "energy", "industrial"],
+    lastUpdated: "2022-01-10",
+    uniqueFacts: [
+      "Required building the largest concrete-faced rock fill dam in Europe",
+      "Involved diverting glacial rivers through 73 km of tunnels driven through solid rock",
+      "Excavated material from tunnels would fill 180 Olympic-sized swimming pools",
+      "Designed to withstand outburst floods from sub-glacial volcanic eruptions"
+    ]
+  },
+  {
+    id: "p51",
+    name: "Diamer-Bhasha Dam",
+    description: "A 4,500 MW hydroelectric dam on the Indus River in Pakistan with a 272-meter-high roller-compacted concrete dam.",
+    status: ProjectStatus.ONGOING,
+    type: ProjectType.WATER,
+    budget: 14000000000,
+    budgetCurrency: "USD",
+    location: {
+      country: "Pakistan",
+      city: "Gilgit-Baltistan",
+      coordinates: {
+        lat: 35.5212,
+        lng: 73.7905
+      }
+    },
+    timeline: {
+      start: "2020-07-15",
+      estimatedCompletion: "2029-12-31"
+    },
+    stakeholders: ["Water and Power Development Authority", "Pakistani Government", "China Gezhouba Group"],
+    tags: ["dam", "hydroelectric", "water management", "energy"],
+    lastUpdated: "2023-09-25",
+    uniqueFacts: [
+      "Will create a reservoir with 8.1 million acre-feet of water storage capacity",
+      "Located in a highly seismic zone, requiring special earthquake-resistant design features",
+      "Will extend the lifespan of downstream Tarbela Dam by 35 years by trapping sediment",
+      "Expected to generate 18 billion units of electricity annually"
+    ]
+  }
+]
