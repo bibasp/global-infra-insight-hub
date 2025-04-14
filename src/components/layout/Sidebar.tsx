@@ -16,7 +16,6 @@ import {
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: Home },
-  { name: "Global Projects", href: "/projects", icon: Database },
   { name: "Map View", href: "/map", icon: Globe },
   { name: "News Feed", href: "/news", icon: Newspaper },
   { name: "Analytics", href: "/analytics", icon: BarChart3 },
@@ -31,9 +30,14 @@ export function AppSidebar() {
           <div className="rounded bg-infra-teal p-1">
             <div className="h-6 w-6 text-white font-bold flex items-center justify-center">II</div>
           </div>
-          <span className="text-lg font-semibold tracking-tight text-sidebar-foreground">
-            Infrastructure Insight
-          </span>
+          <div className="flex flex-col">
+            <span className="text-lg font-semibold tracking-tight text-sidebar-foreground">
+              Global Projects
+            </span>
+            <span className="text-xs text-sidebar-foreground/70">
+              Infrastructure Insight
+            </span>
+          </div>
         </div>
       </SidebarHeader>
       <SidebarContent className="pt-4">
@@ -61,8 +65,10 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter className="border-t border-sidebar-border/50 p-4">
         <div className="flex items-center justify-between">
-          <span className="text-xs text-sidebar-foreground/70">Global Infrastructure Insight Hub</span>
-          <ArrowLeftRight className="h-4 w-4 text-sidebar-foreground/70" />
+          <span className="text-xs text-sidebar-foreground/70">Global Projects Hub</span>
+          <a href="https://www.bibaspokhrel.com.np/globalprojects.html" className="text-xs text-sidebar-foreground/70 hover:text-sidebar-foreground">
+            <ArrowLeftRight className="h-4 w-4" />
+          </a>
         </div>
       </SidebarFooter>
     </Sidebar>

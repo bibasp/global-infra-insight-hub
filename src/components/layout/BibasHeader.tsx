@@ -1,15 +1,25 @@
 
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { 
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 const BibasHeader = () => {
   const { theme, setTheme } = useTheme();
   const location = useLocation();
   const [isMounted, setIsMounted] = useState(false);
+  const [isGlobalProjectsOpen, setIsGlobalProjectsOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -27,13 +37,17 @@ const BibasHeader = () => {
     { name: "Research Summaries", path: "https://www.bibaspokhrel.com.np/research.html" },
     { name: "What's New", path: "https://www.bibaspokhrel.com.np/news.html" },
     { name: "Contact", path: "https://www.bibaspokhrel.com.np/contact.html" },
-    { name: "Global Projects", path: "https://www.bibaspokhrel.com.np/globalprojects.html" }
   ];
 
-  // Internal navigation for this app
+  // Global Projects parent link
+  const globalProjectsLink = { 
+    name: "Global Projects", 
+    path: "https://www.bibaspokhrel.com.np/globalprojects.html" 
+  };
+
+  // Internal navigation for this app (sub-headings under Global Projects)
   const internalNavigation = [
     { name: "Dashboard", path: "/" },
-    { name: "Global Projects", path: "/projects" },
     { name: "Map View", path: "/map" },
     { name: "News Feed", path: "/news" },
     { name: "Analytics", path: "/analytics" },
@@ -60,7 +74,7 @@ const BibasHeader = () => {
             </a>
           </motion.div>
           
-          <nav className="hidden md:flex items-center">
+          <nav className="hidden md:flex items-center space-x-2">
             {/* External website links */}
             {externalNavigation.map((item, i) => (
               <motion.div
@@ -71,41 +85,60 @@ const BibasHeader = () => {
               >
                 <a
                   href={item.path}
-                  className="px-3 py-2 text-sm font-medium transition-colors relative text-foreground/80 hover:text-foreground"
+                  className="px-2 py-2 text-sm font-medium transition-colors relative text-foreground/80 hover:text-foreground"
                 >
                   {item.name}
                 </a>
               </motion.div>
             ))}
             
-            {/* Divider */}
-            <motion.div 
-              className="mx-2 h-5 border-r border-gray-300 dark:border-gray-700"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
+            {/* Global Projects dropdown with sub-headings */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.3 }}
-            />
-            
-            {/* Internal app links */}
-            {internalNavigation.map((item, i) => (
-              <motion.div
-                key={`int-${item.name}`}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + i * 0.05, duration: 0.3 }}
-              >
-                <Link
-                  to={item.path}
-                  className={`px-3 py-2 text-sm font-medium transition-colors relative ${
-                    location.pathname === item.path
-                      ? "text-blue-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-600"
-                      : "text-foreground/80 hover:text-foreground"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </motion.div>
-            ))}
+              className="relative"
+            >
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger 
+                      onClick={() => setIsGlobalProjectsOpen(!isGlobalProjectsOpen)}
+                      className="bg-transparent hover:bg-accent hover:text-accent-foreground px-2 py-2 text-sm font-medium"
+                    >
+                      Global Projects
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className="absolute bg-popover border rounded-md shadow-md p-2 min-w-[200px] z-50">
+                      <ul className="grid gap-1 p-2">
+                        <li>
+                          <a 
+                            href={globalProjectsLink.path}
+                            className="block px-2 py-1.5 text-sm rounded hover:bg-accent hover:text-accent-foreground"
+                          >
+                            Overview
+                          </a>
+                        </li>
+                        <li className="my-1 border-t border-border/30"></li>
+                        {internalNavigation.map((item) => (
+                          <li key={item.name}>
+                            <Link
+                              to={item.path}
+                              className={`block px-2 py-1.5 text-sm rounded ${
+                                location.pathname === item.path ? 
+                                "bg-accent text-accent-foreground" : 
+                                "hover:bg-accent hover:text-accent-foreground"
+                              }`}
+                            >
+                              {item.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </motion.div>
           </nav>
 
           <motion.div 
