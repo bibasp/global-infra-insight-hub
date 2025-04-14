@@ -3,22 +3,27 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Redirecting...</title>
+  <title>Global Infrastructure Insight Hub</title>
   <script>
-    // Single page apps for GitHub Pages or custom domains
-    // Modified from: https://github.com/rafgraph/spa-github-pages
+    // Single page apps for GitHub Pages - handles SPA routing
     const pathSegmentsToKeep = 1; // For /global-infra-insight-hub/
     
-    let l = window.location;
-    // Get the current path after the /global-infra-insight-hub/ part
-    const path = l.pathname.split('/').slice(pathSegmentsToKeep + 1).join('/');
+    const l = window.location;
+    const pathnameSplit = l.pathname.split('/');
+    const basePathSegments = pathnameSplit.slice(0, pathSegmentsToKeep + 1).join('/') + '/'; // /global-infra-insight-hub/
+    const remainingPathSegments = pathnameSplit.slice(pathSegmentsToKeep + 1).join('/');
     
-    // Redirect to the index.html with the path info
+    // Store the full path for redirection
     sessionStorage.redirect = l.pathname + l.search;
-    l.replace(`/global-infra-insight-hub/index.html`);
+    
+    // Redirect to the index page
+    window.location.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      basePathSegments + 'index.html'
+    );
   </script>
 </head>
 <body>
-  Redirecting...
+  Redirecting to the dashboard...
 </body>
 </html>
