@@ -27,6 +27,7 @@ const BibasHeader = () => {
     { name: "Research Summaries", path: "https://www.bibaspokhrel.com.np/research.html" },
     { name: "What's New", path: "https://www.bibaspokhrel.com.np/news.html" },
     { name: "Contact", path: "https://www.bibaspokhrel.com.np/contact.html" },
+    { name: "Global Projects", path: "https://www.bibaspokhrel.com.np/globalprojects.html" }
   ];
 
   // Internal navigation for this app

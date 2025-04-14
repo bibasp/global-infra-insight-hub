@@ -7,15 +7,15 @@
   <script>
     // Single page apps for GitHub Pages or custom domains
     // Modified from: https://github.com/rafgraph/spa-github-pages
-    const pathSegmentsToKeep = 1; // For /global-infrastructure/
+    const pathSegmentsToKeep = 1; // For /global-infra-insight-hub/
     
     let l = window.location;
-    // Get the current path after the /global-infrastructure/ part
+    // Get the current path after the /global-infra-insight-hub/ part
     const path = l.pathname.split('/').slice(pathSegmentsToKeep + 1).join('/');
     
     // Redirect to the index.html with the path info
     sessionStorage.redirect = l.pathname + l.search;
-    l.replace(`/global-infrastructure/index.html`);
+    l.replace(`/global-infra-insight-hub/index.html`);
   </script>
 </head>
 <body>
