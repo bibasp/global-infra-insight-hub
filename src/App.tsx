@@ -21,23 +21,21 @@ const queryClient = new QueryClient();
 const App = () => (
   <ThemeProvider attribute="class" defaultTheme="light">
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Index />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="projects" element={<Projects />} />
-            <Route path="project/:id" element={<ProjectDetail />} />
-            <Route path="map" element={<Map />} />
-            <Route path="news" element={<News />} />
-            <Route path="analytics" element={<Analytics />} />
-            <Route path="about" element={<About />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Toaster />
-        <Sonner />
-      </TooltipProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Index />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="project/:id" element={<ProjectDetail />} />
+          <Route path="map" element={<Map />} />
+          <Route path="news" element={<News />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="about" element={<About />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Toaster />
+      <Sonner />
     </QueryClientProvider>
   </ThemeProvider>
 );
