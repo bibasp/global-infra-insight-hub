@@ -30,8 +30,6 @@ const App = () => (
           <Route path="news" element={<News />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="about" element={<About />} />
-          {/* Add a redirect for the root path with trailing slash */}
-          <Route path="/" element={<Navigate to="/" />} />
         </Route>
         {/* Make sure the 404 route catches everything else */}
         <Route path="*" element={<NotFound />} />
