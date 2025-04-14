@@ -5,25 +5,12 @@
   <meta charset="utf-8">
   <title>Global Infrastructure Insight Hub</title>
   <script>
-    // Single page apps for GitHub Pages - handles SPA routing
-    const pathSegmentsToKeep = 1; // For /global-infra-insight-hub/
-    
-    const l = window.location;
-    const pathnameSplit = l.pathname.split('/');
-    const basePathSegments = pathnameSplit.slice(0, pathSegmentsToKeep + 1).join('/') + '/'; // /global-infra-insight-hub/
-    const remainingPathSegments = pathnameSplit.slice(pathSegmentsToKeep + 1).join('/');
-    
-    // Store the full path for redirection
-    sessionStorage.redirect = l.pathname + l.search;
-    
-    // Redirect to the index page
-    window.location.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      basePathSegments + 'index.html'
-    );
+    // Redirect to the main index.html with the current URL
+    sessionStorage.redirect = window.location.pathname + window.location.search;
+    window.location.href = "/global-infra-insight-hub/";
   </script>
 </head>
 <body>
-  Redirecting to the dashboard...
+  <p>Redirecting to the dashboard...</p>
 </body>
 </html>

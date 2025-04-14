@@ -24,7 +24,7 @@ const NotFound = () => {
           Sorry, the infrastructure project or page you're looking for doesn't exist or has been moved.
         </p>
         <Button asChild>
-          <a href="/">Return to Dashboard</a>
+          <a href="/global-infra-insight-hub/">Return to Dashboard</a>
         </Button>
       </div>
     </div>

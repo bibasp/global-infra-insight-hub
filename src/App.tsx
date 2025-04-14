@@ -1,10 +1,9 @@
 
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
@@ -31,7 +30,10 @@ const App = () => (
           <Route path="news" element={<News />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="about" element={<About />} />
+          {/* Add a redirect for the root path with trailing slash */}
+          <Route path="/" element={<Navigate to="/" />} />
         </Route>
+        {/* Make sure the 404 route catches everything else */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
